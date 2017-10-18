@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>GoFit</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv-printshiv.min.js"></script>
+    <script src="/assets/js/respond.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+<body>
+<div class="content">
+    <header class="b-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    <a href="/" class="b-header__logo">
+                        <img src="/assets/media/img/gofit-logo.png" alt="Gofit">
+                    </a>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <ul class="b-header__menu">
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link">Занятия</a>
+                        </li>
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link">Клубы</a>
+                        </li>
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link">Блог</a>
+                        </li>
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link">Контакты</a>
+                        </li>
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link">Войти</a>
+                        </li>
+                        <li class="b-header__menu-item">
+                            <a href="#" class="b-header__menu-link btn header-register-btn">Регистрация</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+</div>
+<div class="video__wrapper">
+    <canvas id="video__background" class="video__background"></canvas>
+    <div class="container video-height">
+        <div class="row">
+            <div class="col-sm-6  video__description">
+                <div><h1 class="video__description_title"><span>508 спортклубов</span> в одном абонементе</h1>
+                    <p class="video__description_excerpt">Начните экономить до 50 грн. на <br/>
+                        каждом занятии прямо сейчас!</p>
+                    <a class="video__description_action btn__yellow" href="#">Выбрать абонемент</a>
+                </div>
+                <a class="video__play" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27"
+                         height="28" viewBox="0 0 27 28">
+                        <defs>
+                            <path id="a" d="M978 430.38l-28 14v-28z"/>
+                        </defs>
+                        <g transform="translate(-950 -416)">
+                            <use fill="#fff" xlink:href="#a"/>
+                        </g>
+                    </svg>
+                </a>
+                <a class="video__scrollTo" href="#"></a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<section id="map-gyms">
+    <h2>Занятия в клубах <span>Киева</span> на любой вкус</h2>
+    <div id="map"></div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjy7DUsVJZt6vcSDE8f9sHob_Jz3K3YXg&callback=initMap">
+    </script>
+</section>
+<section id="popular-activities">
+    <div class="container">
+        <div class="row">
+            <h4 class="col-8">Популярные занятия в Киеве</h4>
+            <div class="col-4">
+                <a href="#">Показать все занятия</a>
+            </div>
+            <div id="popular-activities-slider" class="col-12 cards-slider" ></div>
+        </div>
+    </div>
+</section>
+<section id="popular-gyms">
+    <div class="container">
+        <div class="row">
+            <h4 class="col-8">Популярные клубы в Киеве</h4>
+            <div class="col-4">
+                <a href="#">Показать все клубы</a>
+            </div>
+            <div id="popular-gyms-slider" class="col-12 cards-slider" ></div>
+        </div>
+    </div>
+</section>
+<section id="why-gofit">
+    <div class="container">
+        <div class="row">
+            <h3 class="col-12 center">Почему люди выбирают  GoFit?</h3>
+        </div>
+    </div>
+</section>
+<section id="free-class"></section>
+<section id="mobile-app"></section>
+<section id="call-back"></section>
+
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
