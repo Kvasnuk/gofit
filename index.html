@@ -85,10 +85,86 @@
 <section id="map-gyms">
     <h2>Занятия в клубах <span>Киева</span> на любой вкус</h2>
     <div id="map"></div>
+    <script>
+        var gyms = [
+            {
+                lat: 50.447914,
+                lng:30.622192,
+                title: 'Студия «SELFCENTER',
+                link: "#",
+                rating: 4.4,
+                description: "<p>Кросфит, Бокс, Йога, Батут… и еще 5</p>"
+
+            },
+            {
+                lat: 50.417914,
+                lng:30.522192,
+                title: 'Banda2',
+                description: "<p>Banda2 text ...</p>",
+                link: "#",
+                rating: 4
+            },
+            {
+                lat:  50.467914,
+                lng:30.422192,
+                title: 'Banda3',
+                description: "<p>Banda3 text ...</p>",
+                link: "#",
+                rating: 2
+            },
+            {
+                lat:  50.447914,
+                lng:30.472192,
+                title: 'Banda4',
+                description: "<p>Banda4 text ...</p>",
+                link: "#",
+                rating: 2
+            },
+            {
+                lat:  50.447914,
+                lng:30.529192,
+                title: 'Banda5',
+                description: "<p>Banda5 text ... </p>",
+                link: "#",
+                rating: 2
+            }
+        ];
+function initMap() {
+    var image = {
+        url: '/assets/media/img/map-marker.svg',
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: {lat: 50.447914, lng: 30.522192}
+    });
+    var infowindow = new google.maps.InfoWindow({
+        content: ''
+    });
+    for (var i = 0; i <  gyms.length; i++) {
+        var  gym = gyms[i];
+        var marker = new google.maps.Marker({
+            position: {lat: gym.lat, lng: gym.lng},
+            map: map,
+            icon: image,
+            id: 'gym-' + i,
+            title: gym.title,
+            description: gym.description,
+            link: gym.link,
+            rating: gym.rating,
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.close();
+            infowindow.setContent("<div class='class='map-gym__card'><h3 class='map-gym__title' >"+ this.title+"</h3> <p class='map-gym__rating'> <span class='rating-star' data-rating='1'></span> <span class='rating-star' data-rating='2'></span> <span class='rating-star' data-rating='3'></span> <span class='rating-star' data-rating='4'></span> <span class='rating-star' data-rating='5'></span> <span class='rating-average'>"+ this.rating +"</span> </p> <div class='map-gym__desc'>"+ this.description +"</div><a class='map-gym__link' href='"+ this.link +"'></a></div>");
+            infowindow.open(map, this);
+        });
+    }
+}
+    </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjy7DUsVJZt6vcSDE8f9sHob_Jz3K3YXg&callback=initMap">
     </script>
 </section>
+
 <section id="popular-activities">
     <div class="container">
         <div class="row">
@@ -233,7 +309,7 @@
         </div>
     </div>
 </section>
-<section id="why-gofit">
+<section id="why-gofit" class="b-compare">
     <h3 class="col-12 text-center b-compare__title">Почему люди выбирают GoFit?</h3>
     <div class="b-compare__wrapper">
 
@@ -266,8 +342,8 @@
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>20</b><span>Типов занятий</span></p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>Типов занятий</span></p>
                 </div>
             </div>
         </div>
@@ -275,8 +351,8 @@
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>dfvdf ssdcsdc</span></p>
                 </div>
             </div>
         </div>
@@ -284,8 +360,8 @@
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><br /> <span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>dfvdf ssdcsdc</span></p>
                 </div>
             </div>
         </div>
@@ -296,12 +372,12 @@
                 <div class="row">
                     <div class="col-6 text-center b-compare__item_text b-compare__another">
                         <p class="logo-container">
-                            <b>234</b><br /> <span>dfvdf ssdcsdc</span>
+                            <b>234</b><span>dfvdf ssdcsdc</span>
                         </p>
                     </div>
                     <div class="col-6 text-center  b-compare__item_text b-compare__gofit">
                         <p class="logo-container">
-                            <b>234</b><br /> <span>dfvdf ssdcsdc</span>
+                            <b>234</b><span>dfvdf ssdcsdc</span>
                         </p>
                     </div>
                 </div>
@@ -312,11 +388,11 @@
             <div class="container">
                 <div class="row">
                     <p class="col-6 text-center b-compare__item_text b-compare__another">
-                        <b>234</b><br />
+                        <b>234</b>
                         <span>dfvdf ssdcsdc</span>
                     </p>
                     <p class="col-6 text-center  b-compare__item_text b-compare__gofit">
-                        <b>234</b><br />
+                        <b>234</b>
                         <span>dfvdf ssdcsdc</span>
                     </p>
                 </div>
@@ -342,33 +418,33 @@
     <div class="container">
         <div class="row free-class__height">
             <div class="col-6 d-flex flex-column justify-content-center">
-                <div class="free-class__content">
+                <div class="free-class__content section__content_width">
                     <h3 class="free-class__title">Еще сомневаетесь?</h3>
                     <p class="free-class__excerpt">Зарегистрируйтесь и получите бесплатное занятие прямо сейчас!</p>
-                    <a class="btn__yellow" href="">Получить бесплатное занятие</a>
+                    <a class=" free-class__btn btn__yellow" href="">Получить бесплатное занятие</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section id="mobile-app">
+<section id="mobile-app" class="mobile-app">
     <div class="container">
-        <div class="row free-class__height">
+        <div class="row mobile-app__height">
             <div class="col-6 d-flex flex-column justify-content-center">
-                <div class="free-class__content">
-                    <h3 class="free-class__title">Скоро в вашем cмартфоне</h3>
-                    <p class="free-class__excerpt">Находить клубы поблизости теперь просто и удобно.
+                <div class="mobile-app__content section__content_width">
+                    <h3 class="mobile-app__title">Скоро в вашем cмартфоне</h3>
+                    <p class="mobile-app__excerpt">Находить клубы поблизости теперь просто и удобно.
                         Скачайте мобильное приложение GoFit прямо сейчас
                         и получите пробное занятие бесплатно! </p>
-                    <a class="" href="#">
+                    <a class="mobile-app__btn g-market" href="#">
                     </a>
-                    <a class="" href="#">
+                    <a class="mobile-app__btn app-store"  href="#">
                     </a>
-                    <p>Сообщить когда станет доступно</p>
-                    <form class="form-inline">
+                    <p class="mobile-app__msg" ><span>Сообщить когда станет доступно</span></p>
+                    <form class="mobile-app__form form-inline">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-                            <button class="input-group-addon"><img src="/assets/media/img/send-mail.svg" alt=""></button>
+                            <input type="email" class="form-control form-input" id="inlineFormInputGroup" placeholder="example@mail.com">
+                            <button class="input-group-addon mobile-app__form-submit form-submit"></button>
                         </div>
                     </form>
 
@@ -381,10 +457,25 @@
 
         </div>
     </div>
-
-
 </section>
-<section id="call-back"></section>
+<section id="call-back"  class="b-call-back">
+    <div class="container">
+        <div class="row b-call-back__height">
+            <div class="col-12 d-flex flex-column justify-content-center">
+                <div class="b-call-back__content">
+                    <h3 class="b-call-back__title">Остались вопросы?</h3>
+                    <p class="b-call-back__excerpt">Оставьте свой номер телефона, и мы перезвоним вам в течении 5 минут!</p>
+                    <form class="form-inline justify-content-center">
+                        <div class="input-group">
+                            <input type="tel" class="form-control form-input" id="inlineFormInputGroup" placeholder="Username">
+                            <button class="input-group-addon b-call-back__form-submit form-submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -392,5 +483,6 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="bower_components/tether/dist/js/tether.min.js"></script>
 </body>
 </html>
