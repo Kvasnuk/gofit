@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
@@ -89,7 +90,7 @@
         var gyms = [
             {
                 lat: 50.447914,
-                lng:30.622192,
+                lng: 30.622192,
                 title: 'Студия «SELFCENTER',
                 link: "#",
                 rating: 4.4,
@@ -98,67 +99,81 @@
             },
             {
                 lat: 50.417914,
-                lng:30.522192,
+                lng: 30.522192,
                 title: 'Banda2',
                 description: "<p>Banda2 text ...</p>",
                 link: "#",
                 rating: 4
             },
             {
-                lat:  50.467914,
-                lng:30.422192,
+                lat: 50.467914,
+                lng: 30.422192,
                 title: 'Banda3',
                 description: "<p>Banda3 text ...</p>",
                 link: "#",
                 rating: 2
             },
             {
-                lat:  50.447914,
-                lng:30.472192,
+                lat: 50.447914,
+                lng: 30.472192,
                 title: 'Banda4',
                 description: "<p>Banda4 text ...</p>",
                 link: "#",
                 rating: 2
             },
             {
-                lat:  50.447914,
-                lng:30.529192,
+                lat: 50.447914,
+                lng: 30.529192,
                 title: 'Banda5',
                 description: "<p>Banda5 text ... </p>",
                 link: "#",
                 rating: 2
             }
         ];
-function initMap() {
-    var image = {
-        url: '/assets/media/img/map-marker.svg',
-    };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: {lat: 50.447914, lng: 30.522192}
-    });
-    var infowindow = new google.maps.InfoWindow({
-        content: ''
-    });
-    for (var i = 0; i <  gyms.length; i++) {
-        var  gym = gyms[i];
-        var marker = new google.maps.Marker({
-            position: {lat: gym.lat, lng: gym.lng},
-            map: map,
-            icon: image,
-            id: 'gym-' + i,
-            title: gym.title,
-            description: gym.description,
-            link: gym.link,
-            rating: gym.rating,
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.close();
-            infowindow.setContent("<div class='class='map-gym__card'><h3 class='map-gym__title' >"+ this.title+"</h3> <p class='map-gym__rating'> <span class='rating-star' data-rating='1'></span> <span class='rating-star' data-rating='2'></span> <span class='rating-star' data-rating='3'></span> <span class='rating-star' data-rating='4'></span> <span class='rating-star' data-rating='5'></span> <span class='rating-average'>"+ this.rating +"</span> </p> <div class='map-gym__desc'>"+ this.description +"</div><a class='map-gym__link' href='"+ this.link +"'></a></div>");
-            infowindow.open(map, this);
-        });
-    }
-}
+        var gmarkers = [];
+        function initMap() {
+            var image = {
+                url: '/assets/media/img/map-marker.svg',
+            };
+            var imageActive = {
+                url: '/assets/media/img/marker-active.svg',
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: {lat: 50.447914, lng: 30.522192}
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: ''
+            });
+            for (var i = 0; i < gyms.length; i++) {
+                var gym = gyms[i];
+                var marker = new google.maps.Marker({
+                    position: {lat: gym.lat, lng: gym.lng},
+                    map: map,
+                    icon: image,
+                    id: 'gym-' + i,
+                    title: gym.title,
+                    description: gym.description,
+                    link: gym.link,
+                    rating: gym.rating,
+                });
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.close();
+                    for (var i = 0; i < gmarkers.length; i++) {
+                        gmarkers[i].setIcon(image);
+                    }
+                    this.setIcon(imageActive);
+                    infowindow.setContent("<div class='class='map-gym__card'><h3 class='map-gym__title' >" + this.title + "</h3> <p class='map-gym__rating'> <span class='rating-star' data-rating='1'></span> <span class='rating-star' data-rating='2'></span> <span class='rating-star' data-rating='3'></span> <span class='rating-star' data-rating='4'></span> <span class='rating-star' data-rating='5'></span> <span class='rating-average'>" + this.rating + "</span> </p> <div class='map-gym__desc'>" + this.description + "</div><a class='map-gym__link' href='" + this.link + "'></a></div>");
+                    infowindow.open(map, this);
+                });
+                google.maps.event.addListener(infowindow, 'closeclick', function () {
+                    for (var i = 0; i < gmarkers.length; i++) {
+                        gmarkers[i].setIcon(image);
+                    }
+                });
+                gmarkers.push(marker);
+            }
+        }
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjy7DUsVJZt6vcSDE8f9sHob_Jz3K3YXg&callback=initMap">
@@ -172,8 +187,8 @@ function initMap() {
             <div class="col-4 section__link">
                 <a class="link-arrow-right" href="#">Показать все занятия</a>
             </div>
-            <div id="popular-activities-slider" class="col-12 cards-slider">
-                <ul class="row   b-slider-wrapper pl-0">
+            <div class="col-12 cards-slider">
+                <ul id="popular-activities-slider" class="row   b-slider-wrapper pl-0">
                     <li class="col-3 b-slider__item  align-items-stretch">
                         <a href="#" class="b-slider__card ">
                             <img class="img-fluid" src="assets/media/img/fitnes-1.png" alt="Йога">
@@ -191,6 +206,17 @@ function initMap() {
                                 и еще 5…</p>
                             <span class="b-slider__card_count">350 занятий</span>
                         </a>
+                    </li>
+                    </li>
+                    <li class="col-3 b-slider__item  align-items-stretch">
+                        <a href="#" class="b-slider__card ">
+                            <img class="img-fluid" src="assets/media/img/fitnes-1.png" alt="Фитнес">
+                            <h5 class="b-slider__card_title class-icon class-fitness">Фитнес</h5>
+                            <p class="b-slider__card_description">Хатха йога, Аштанга-Виньяса йога, Power йога, Инь-йога
+                                и еще 5…</p>
+                            <span class="b-slider__card_count">350 занятий</span>
+                        </a>
+                    </li>
                     </li>
                     <li class="col-3 b-slider__item  align-items-stretch">
                         <a href="#" class="b-slider__card ">
@@ -223,8 +249,27 @@ function initMap() {
             <div class="col-4 section__link">
                 <a class="link-arrow-right" href="#">Показать все клубы</a>
             </div>
-            <div id="popular-gyms-slider" class="col-12 b-slider">
-                <ul class="row   b-slider-wrapper pl-0">
+            <div class="col-12 b-slider">
+                <ul id="popular-gyms-slider" class="row   b-slider-wrapper pl-0">
+                    <li class="col-3 b-slider__item  align-items-stretch">
+                        <a href="#" class="b-slider__card ">
+                            <img class="img-fluid" src="assets/media/img/gym-1.png" alt="Йога">
+                            <img class="b-slider__card_logo img-fluid " src="assets/media/img/gym-logo-1.png"
+                                 alt="Студия «SELFCENTER»">
+                            <h5 class="b-slider__card_title class-yoga">Студия «SELFCENTER»</h5>
+                            <p class="b-slider__card_description">Хатха йога, Аштанга-Виньяса йога, Power йога, Инь-йога
+                                и еще 5…</p>
+                            <p class="b-slider__card_count">
+                                <span class="rating-star" data-rating="1"></span>
+                                <span class="rating-star" data-rating="2"></span>
+                                <span class="rating-star" data-rating="3"></span>
+                                <span class="rating-star" data-rating="4"></span>
+                                <span class="rating-star" data-rating="5"></span>
+                                <span class="rating-average">4.6</span>
+                                <span class="rating-user-votes">(24)</span>
+                            </p>
+                        </a>
+                    </li>
                     <li class="col-3 b-slider__item  align-items-stretch">
                         <a href="#" class="b-slider__card ">
                             <img class="img-fluid" src="assets/media/img/gym-1.png" alt="Йога">
@@ -316,7 +361,7 @@ function initMap() {
         <div class="b-compare__simbol">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center"><span>VS</span></div>
+                    <div class="col-12 text-center"><span id="simbol-vs">VS</span></div>
                 </div>
             </div>
         </div>
@@ -326,13 +371,14 @@ function initMap() {
                 <div class="row">
                     <div class="col-6 text-center ">
                         <div class="logo-container">
-                            <figure class="b-compare__logo another-gym"><span>ОБЫЧНЫЙ <br />АБОНЕМЕНТ</span></figure>
+                            <figure class="b-compare__logo another-gym"><span>ОБЫЧНЫЙ <br/>АБОНЕМЕНТ</span></figure>
+                            <p  class="b-compare__logo-sm  another-logo-sm">ОБЫЧНЫЙ <br/>АБОНЕМЕНТ</p>
                         </div>
-
                     </div>
                     <div class="col-6 text-center">
                         <div class="logo-container">
                             <figure class="b-compare__logo gofit-logo"></figure>
+                            <p  class="b-compare__logo-sm gofit-logo-sm"></p>
                         </div>
                     </div>
                 </div>
@@ -342,8 +388,10 @@ function initMap() {
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>20</b><span>Типов занятий</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>Типов занятий</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>20</b><span>Клубов или студий</span>
+                    </p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>538</b><span>Клубов, студий и центров</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -351,8 +399,10 @@ function initMap() {
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><span>dfvdf ssdcsdc</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another">
+                        <b>35</b><span>Типов занятий</span></p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit">
+                        <b>350</b><span>Типов занятий</span></p>
                 </div>
             </div>
         </div>
@@ -360,8 +410,10 @@ function initMap() {
         <div class="b-compare__item">
             <div class="container">
                 <div class="row">
-                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>234</b><span>dfvdf ssdcsdc</span></p>
-                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>234</b><span>dfvdf ssdcsdc</span></p>
+                    <p class="col-6 text-center b-compare__item_text b-compare__another"><b>14</b><span>Дней заморозки абонемента</span>
+                    </p>
+                    <p class="col-6 text-center  b-compare__item_text b-compare__gofit"><b>60</b><span>Дней заморозки абонемента</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -372,36 +424,31 @@ function initMap() {
                 <div class="row">
                     <div class="col-6 text-center b-compare__item_text b-compare__another">
                         <p class="logo-container">
-                            <b>234</b><span>dfvdf ssdcsdc</span>
+                            <b>1</b><span>Город для занятий</span>
                         </p>
                     </div>
                     <div class="col-6 text-center  b-compare__item_text b-compare__gofit">
                         <p class="logo-container">
-                            <b>234</b><span>dfvdf ssdcsdc</span>
+                            <b>6</b><span>Город для занятий</span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="b-compare__item price-item">
+        <div class="b-compare__item price-item action-item">
             <div class="container">
                 <div class="row">
                     <p class="col-6 text-center b-compare__item_text b-compare__another">
-                        <b>234</b>
-                        <span>dfvdf ssdcsdc</span>
+                        <b>2500 <span> грн.</span></b>
+                        <span>Стоимость обычного абонемента</span>
                     </p>
                     <p class="col-6 text-center  b-compare__item_text b-compare__gofit">
-                        <b>234</b>
-                        <span>dfvdf ssdcsdc</span>
+                        <b>599 <span>грн.</span></b>
+                        <span>Стоимость абонемента GoFit</span>
                     </p>
                 </div>
-            </div>
-        </div>
-
-        <div class="b-compare__item action-item">
-            <div class="container">
-                <div class="row">
+                <div class="row  last-item">
                     <p class="col-12 col-sm-6  text-center b-compare__item_text b-compare__another">
                         <a class="btn__link btn__link-default" href="#">Продолжить переплачивать</a>
                     </p>
@@ -411,6 +458,19 @@ function initMap() {
                 </div>
             </div>
         </div>
+
+        <!--<div class="b-compare__action action-item">-->
+        <!--<div class="container">-->
+        <!--<div class="row">-->
+        <!--<p class="col-12 col-sm-6  text-center b-compare__item_text b-compare__another">-->
+        <!--<a class="btn__link btn__link-default" href="#">Продолжить переплачивать</a>-->
+        <!--</p>-->
+        <!--<p class="col-12 col-sm-6  text-center  b-compare__item_text b-compare__gofit">-->
+        <!--<a class="btn__link btn__link-active" href="#">Выбрать абонемент GoFit</a>-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
     </div>
 </section>
@@ -438,13 +498,15 @@ function initMap() {
                         и получите пробное занятие бесплатно! </p>
                     <a class="mobile-app__btn g-market" href="#">
                     </a>
-                    <a class="mobile-app__btn app-store"  href="#">
+                    <a class="mobile-app__btn app-store" href="#">
                     </a>
-                    <p class="mobile-app__msg" ><span>Сообщить когда станет доступно</span></p>
-                    <form class="mobile-app__form form-inline">
+                    <p class="mobile-app__msg"><span>Сообщить когда станет доступно</span></p>
+                    <form id="mobileAppForm" class="mobile-app__form form-inline">
                         <div class="input-group">
-                            <input type="email" class="form-control form-input" id="inlineFormInputGroup" placeholder="example@mail.com">
-                            <button class="input-group-addon mobile-app__form-submit form-submit"></button>
+                            <input type="email" class="form-control form-input" id="inlineFormInputGroup"
+                                   placeholder="example@mail.com">
+                            <button type='button' class="input-group-addon mobile-app__form-submit form-submit"
+                                    data-content="email"></button>
                         </div>
                     </form>
 
@@ -458,17 +520,20 @@ function initMap() {
         </div>
     </div>
 </section>
-<section id="call-back"  class="b-call-back">
+<section id="call-back" class="b-call-back">
     <div class="container">
         <div class="row b-call-back__height">
             <div class="col-12 d-flex flex-column justify-content-center">
                 <div class="b-call-back__content">
                     <h3 class="b-call-back__title">Остались вопросы?</h3>
-                    <p class="b-call-back__excerpt">Оставьте свой номер телефона, и мы перезвоним вам в течении 5 минут!</p>
+                    <p class="b-call-back__excerpt">Оставьте свой номер телефона, и мы перезвоним вам в течении 5
+                        минут!</p>
                     <form class="form-inline justify-content-center">
                         <div class="input-group">
-                            <input type="tel" class="form-control form-input" id="inlineFormInputGroup" placeholder="Username">
-                            <button class="input-group-addon b-call-back__form-submit form-submit"></button>
+                            <input type="tel" class="form-control form-input" id="call-back-input"
+                                   placeholder="+38 (095) 666-01-47">
+                            <button type="button" class="input-group-addon b-call-back__form-submit form-submit"
+                                    data-content="phone"></button>
                         </div>
                     </form>
                 </div>
@@ -478,11 +543,41 @@ function initMap() {
 </section>
 
 
+<div class="modal fade" id="gf-modal-sm" tabindex="-1" role="dialog" aria-labelledby="GoF" aria-hidden="true">
+    <div class="modal-dialog gf-modal__dialog " role="document">
+        <div class="gf-modal__header">
+            <button type="button" class="gf-modal__close gf-modal__sm_close"></button>
+        </div>
+        <div class="gf-modal__content ">
+            <div class="gf-modal__text">
+                <p class="gf-modal__text_title"></p>
+                <img class="gf-modal__text_icon" src="/assets/media/img/modal-letter.svg" alt="icon">
+                <p class="gf-modal__text_desc"></p>
+                <a href="/" class="gf-modal__text_btn">На главную</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="GoFit" aria-hidden="true">
+    <div class="modal-dialog gf-modal__dialog video-dialog" role="document">
+        <div class="gf-modal__header">
+            <button type="button" class="gf-modal__close"></button>
+        </div>
+        <div class="gf-modal__content video-modal-content">
+        </div>
+    </div>
+</div>
+</div>
+
+
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/tether/dist/js/tether.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/slick-carousel/slick/slick.min.js"></script>
 <script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="bower_components/tether/dist/js/tether.min.js"></script>
 </body>
 </html>
