@@ -33,8 +33,8 @@ $(document).ready(function () {
         bannerGreenBlockDraw();
     });
     function bannerGreenBlockDraw() {
-        // var  img = document.createElement('img');
-        // img.src = "/assets/media/img/patt-test.png";
+        var  img = document.createElement('img');
+        img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background'),
             bannerWidth = $(window).width() / 2,
             bannerHeight = 1 + ($(window).width() / 16) * 9;
@@ -49,7 +49,7 @@ $(document).ready(function () {
         banner.width = bannerWidth;
         banner.height = bannerHeight;
         ctx.clearRect(0, 0, banner.width, banner.height);
-        // var pat=ctx.createPattern(img,"repeat");
+        var pat=ctx.createPattern(img,"repeat");
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(bannerWidth, 0);
@@ -60,6 +60,19 @@ $(document).ready(function () {
         ctx.lineTo(0, bannerHeight);
         ctx.lineTo(0, 0);
         ctx.fillStyle = 'rgba(29, 208, 186, 0.98)';
+        ctx.strokeStyle = "transparent";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(bannerWidth, 0);
+        ctx.lineTo(bannerWidth, bannerCurveTop);
+        ctx.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
+        ctx.moveTo(bannerWidth, bannerCurveBottom);
+        ctx.lineTo(bannerWidth, bannerHeight);
+        ctx.lineTo(0, bannerHeight);
+        ctx.lineTo(0, 0);
+        ctx.fillStyle = pat;
         ctx.strokeStyle = "transparent";
         ctx.fill();
         ctx.stroke();
@@ -80,8 +93,6 @@ $(document).ready(function () {
             scrollTop: $("#map-gyms").offset().top
         }, 1000);
     });
-
-
     $('#popular-activities-slider, #popular-gyms-slider').slick({
         infinite: true,
         slidesToShow: 4,
@@ -130,18 +141,6 @@ $(document).ready(function () {
         offset: '45%'
     });
 
-
-
-
-
-    // $('.price-item').waypoint(function (direction) {
-    //     if (direction === 'down') {
-    //     } else if (direction === 'up') {
-    //     }
-    // }, {
-    //     offset: '50%'
-    // });
-
     $('.last-item').waypoint(function (direction) {
         if (direction === 'down') {
             $('.b-compare__simbol').addClass('bottom');
@@ -151,7 +150,6 @@ $(document).ready(function () {
     }, {
         offset: '60%'
     });
-
 
     $('.b-compare__item').waypoint(function (direction) {
         if (direction === 'down') {
@@ -212,9 +210,6 @@ $(document).ready(function () {
 
                 break;
         }
-
-
-
     });
 
 });
