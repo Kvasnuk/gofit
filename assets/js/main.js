@@ -3,8 +3,8 @@
 /*----------------------------END----------------------------*/
 
 $(document).ready(function () {
-    getVideoSize();
-    bannerGreenBlockDraw();
+    // getVideoSize();
+    // bannerGreenBlockDraw();
     /*-----------------ADD HOME PAGE VIDEO----------------------------*/
 
     function getVideoSize() {
@@ -211,5 +211,4 @@ $(document).ready(function () {
                 break;
         }
     });
-
 });
