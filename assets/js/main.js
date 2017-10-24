@@ -3,8 +3,11 @@
 /*----------------------------END----------------------------*/
 
 $(document).ready(function () {
-    // getVideoSize();
-    // bannerGreenBlockDraw();
+     if(window.location.pathname === "/"){
+          getVideoSize();
+         bannerGreenBlockDraw();
+     }
+
     /*-----------------ADD HOME PAGE VIDEO----------------------------*/
 
     function getVideoSize() {
