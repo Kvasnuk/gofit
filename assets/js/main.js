@@ -105,6 +105,24 @@ $(document).ready(function () {
         autoplay: true,
         autoplaySpeed: 4000,
     });
+$('#stars-slider').slick({
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+    });
+$('#press-slider,#users-slider').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+    });
 
 // $('.b-compare__simbol').waypoint(function(){
 //     $('.b-compare__simbol').toggleClass('fixed');
