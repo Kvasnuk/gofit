@@ -90,8 +90,21 @@ $(document).ready(function () {
     }
 
     $('.video__play').click(function (e) {
+
+if($(window).width() >= 1000){
+    var modalWin = 960,
+        modalHeight = 540;
+}else{
+    modalWin = $(window).width() - 50;
+    modalHeight = (modalWin / 16 ) * 9;
+    $('.gf-modal__dialog.video-dialog').css({'max-width':   modalWin, 'height': modalHeight});
+}
+
+
+
+
         e.preventDefault();
-        $('.video-modal-content').append(' <iframe id="modalVideo" width="960" height="540" src="https://www.youtube.com/embed/4B5sfE1fjLs?autoplay=1&mute=0&loop=1&playlist=4B5sfE1fjLs&controls=1" frameborder="0" allowfullscreen></iframe>');
+        $('.video-modal-content').append(' <iframe id="modalVideo" width="'+ modalWin+'" height="'+ modalHeight+'" src="https://www.youtube.com/embed/4B5sfE1fjLs?autoplay=1&mute=0&loop=1&playlist=4B5sfE1fjLs&controls=1" frameborder="0" allowfullscreen></iframe>');
         $('#videoModal').modal('show');
     });
     $('.close-modal,#videoModal').click(function () {
@@ -177,85 +190,6 @@ $('#press-slider,#users-slider').slick({
             container.fadeOut(300);
         }
     });
-// $('.b-compare__simbol').waypoint(function(){
-//     $('.b-compare__simbol').toggleClass('fixed');
-//     {
-//         offset: function() {
-//             return $.waypoints('viewportHeight') / 2 - $(this).outerHeight();
-//         }
-//     }
-// });
-
-    // $('#simbol-vs').waypoint(function() {
-    //         $('.b-compare__simbol').toggleClass('fixed');
-    // }, {
-    //     offset: '50%'
-    // });
-
-
-
-
- //    $('.b-compare__title').waypoint(function () {
- //        $('.b-compare__header').toggleClass('fixed');
- //        $('.b-compare__wrapper').toggleClass('offset-top');
- //    }, {
- //        offset: '-250px'
- //    });
- // $('.price-item').waypoint(function () {
- //        $('.b-compare__header').toggleClass('hidden');
- //    }, {
- //        offset: '100px'
- //    });
- //
- //     $('.b-compare__header').waypoint(function (direction) {
- //        if (direction === 'down') {
- //            $('.b-compare__simbol').addClass('fixed');
- //        } else if (direction === 'up') {
- //            $('.b-compare__simbol').removeClass('fixed');
- //            $('.b-compare__item').removeClass('active');
- //        }
- //    }, {
- //        offset: '45%'
- //    });
- //
- //    $('.last-item').waypoint(function (direction) {
- //        if (direction === 'down') {
- //            $('.b-compare__simbol').addClass('bottom');
- //        } else if (direction === 'up') {
- //            $('.b-compare__simbol').removeClass('bottom');
- //        }
- //    }, {
- //        offset: '60%'
- //    });
- //
- //    $('.b-compare__item').waypoint(function (direction) {
- //        if (direction === 'down') {
- //            $('.b-compare__item').removeClass('active');
- //            $(this.element).addClass('active');
- //        }
- //    }, {
- //        offset: '58%'
- //    });
-    // $('.b-compare__item').waypoint(function (direction) {
-    //     if (direction === 'up') {
-    //         $('.b-compare__item').removeClass('active');
-    //         $(this.element).addClass('active');
-    //     }
-    // }, {
-    //     offset: '45%'
-    // });
-
-
-    // $(window).scroll(function(){
-    //     var windowHeight = $(window).height(),
-    //         windowCenter = windowHeight / 2 ;
-    //
-    //     var scroll = $(window).scrollTop();
-    //     scroll = scroll +  windowCenter
-    //     var  offset = $('#simbol-vs').offset();
-    //     offset = offset.top;
-    //     al(scroll , offset);
-    // });
 
     var windowCenter = function(){
         var windowHeight = $(window).height() / 2.5;
