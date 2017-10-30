@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <div class="content">
@@ -1069,8 +1069,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control form-input ticket-input" id="ticket-input"
                                        placeholder="ADC-45F">
-                                <button type="button" class="input-group-addon ticket-btn  form-submit"
-                                        data-content="ticket">Активировать
+                                <button type="button" class="input-group-addon ticket-btn  form-submit ticket-modal">Активировать
                                 </button>
                             </div>
                         </form>
@@ -1089,7 +1088,7 @@
     <h3 class="block__title  b-benefits__title text-center ">Преимущества абонемента GoFit</h3>
     <div class="container-small">
         <div class="row b-benefits__item">
-            <div class="col-12 col-sm-6 b-benefits__img img-1">
+            <div class="col-12 col-sm-6 b-benefits__img img-1 play-animation">
                 <img src="/assets/media/img/no-img.png" alt="">
             </div>
             <div class="col-12 col-sm-6 d-flex flex-column justify-content-center  b-benefits__desc ">
@@ -1102,7 +1101,7 @@
                 <h5>Широкий ассортимент</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
             </div>
-            <div class="col-12 col-sm-6 b-benefits__img img-2">
+            <div class="col-12 col-sm-6 b-benefits__img img-2 play-animation">
                 <img src="/assets/media/img/no-img.png" alt="">
             </div>
         </div>
@@ -1531,11 +1530,30 @@
 </section>
 
 
+
+<div class="modal fade" id="gf-modal-ticket" tabindex="-1" role="dialog" aria-labelledby="ticket" aria-hidden="true">
+    <div class="modal-dialog gf-modal__dialog " role="document">
+        <div class="gf-modal__header">
+            <button type="button" class="gf-modal__close gf-modal__sm_close"></button>
+        </div>
+        <div class="gf-modal__content ">
+            <div class="gf-modal__text">
+                <p class="gf-modal__text_title">Активация абонемента</p>
+                <p class="gf-modal__text_desc">Подтвердите активацию абонемента</p>
+                <input type="text" class="gf-modal__ticket_code form-input">
+                <div class="g-recaptcha" data-sitekey="6LfkYDYUAAAAAC1uDNEXKyoSksrjdB2pMCoqcbdQ"></div>
+                <a href="/" class="gf-modal__text_btn send-ticket-code">Активировать</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/tether/dist/js/tether.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
 <script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="assets/js/stick.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
