@@ -1,11 +1,78 @@
 $(document).ready(function () {
+    var windowCenter = function () {
+        return $(window).height() / 2.5;
+    };
+    var compareOffset = function(direction){
+       var  windowWidth = $(window).width(),
+            offsetDown = 0,
+            offsetUp = 0;
+
+        if(windowWidth >= 992  ){
+            offsetDown = 120;
+            offsetUp = 0;
+        }else  if(windowWidth >= 768  ){
+            offsetDown= 10;
+            offsetUp = -140;
+        }else  if(windowWidth >= 640  ){
+            offsetDown = -15;
+            offsetUp = -130;
+        }else  if(windowWidth >= 575  ){
+            offsetDown = -40;
+            offsetUp = -120;
+        }
+
+        if(direction === "down"){
+            return   offsetDown ;
+        }else  if(direction === "up"){
+            return   offsetUp ;
+        }
+
+    };
+
+
+
+
+
+    $('.b-compare__item').waypoint(function (direction) {
+        if (direction === 'down') {
+            $('.b-compare__item').removeClass('active');
+            $(this.element).addClass('active');
+        }
+    }, {
+        offset: windowCenter() +  compareOffset('down')
+    });
+
+
+
+
+    $('.b-compare__item').waypoint(function (direction) {
+        if (direction === 'up') {
+            $('.b-compare__item').removeClass('active');
+            $(this.element).addClass('active');
+        }
+    }, {
+        offset: windowCenter() + compareOffset('up')
+    });
+
+
+
+
+
 
     /* init video bachground*/
     if (window.location.pathname === "/" && $(window).width() >= 992) {
         getVideoSize();
         bannerGreenBlockDraw();
+         $(".b-compare__header-fix").stick_in_parent({});
+    }else if (window.location.pathname === "/" && $(window).width() < 992){
+        $('#home-page-video').remove();
     }
-
+    if(window.location.pathname === "/" && $(window).width() >= 575){
+        $("#simbol-vs").stick_in_parent({
+            offset_top: windowCenter()
+        });
+    }
+    // $(".b-compare__header-fix").stick_in_parent({});
     /*show  mobile menu */
     $('.mobile-menu__burger').click(function () {
         $(this).toggleClass('open');
@@ -165,34 +232,9 @@ $(document).ready(function () {
         }
     });
 
-    var windowCenter = function () {
-        var windowHeight = $(window).height() / 2.5;
-        return windowHeight
-    }
-
-    $("#simbol-vs").stick_in_parent({
-        offset_top: windowCenter()
-    });
-    $(".b-compare__header-fix").stick_in_parent({});
 
 
-    $('.b-compare__item').waypoint(function (direction) {
-        if (direction === 'down') {
-            $('.b-compare__item').removeClass('active');
-            $(this.element).addClass('active');
-        }
-    }, {
-        offset: windowCenter() + 120
-    });
 
-    $('.b-compare__item').waypoint(function (direction) {
-        if (direction === 'up') {
-            $('.b-compare__item').removeClass('active');
-            $(this.element).addClass('active');
-        }
-    }, {
-        offset: windowCenter()
-    });
 
     $('.b-compare__header').waypoint(function (direction) {
         if (direction === 'up') {
