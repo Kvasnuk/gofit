@@ -1,50 +1,36 @@
-/*-----------------HOME PAGE MAP INIT----------------------------*/
-
-/*----------------------------END----------------------------*/
-
 $(document).ready(function () {
-     if(window.location.pathname === "/" && $(window).width() >= 992){
-          getVideoSize();
-         bannerGreenBlockDraw();
-     }
 
+    /* init video bachground*/
+    if (window.location.pathname === "/" && $(window).width() >= 992) {
+        getVideoSize();
+        bannerGreenBlockDraw();
+    }
 
-
-
-
-    $('.mobile-menu__burger').click(function(){
+    /*show  mobile menu */
+    $('.mobile-menu__burger').click(function () {
         $(this).toggleClass('open');
         $('.b-header__menu ').toggleClass('open');
     });
     /*-----------------ADD HOME PAGE VIDEO----------------------------*/
 
     function getVideoSize() {
-        var videoContainerHeight = '';
         var windowWidth = $(window).width(),
-            videoHeight =  videoContainerHeight = (windowWidth / 16) * 9;
-        if (videoHeight > 879) {
-                videoHeight = 860;
+            videoHeight  = (windowWidth / 16) * 9;
+        if (videoHeight > 859) {
+            videoHeight = 860;
         }
         $('.video__description, .video__wrapper').height(videoHeight);
-        if ($('#gofit-banner-video').length == 0) {
-            initVideoBanner('gofit-banner-video', windowWidth, videoContainerHeight, 0);
-        } else {
-            $('#gofit-banner-video').width(windowWidth);
-            $('#gofit-banner-video').height(videoHeight);
-
-        }
     };
-    function initVideoBanner(videoID, videoWidth, videoHeight, videoControls) {
-        $('#video__background').before(' <iframe id="' + videoID + '" width="' + videoWidth + '" height="' + videoHeight + '" src="https://www.youtube.com/embed/4B5sfE1fjLs?autoplay=1&mute=1&loop=1&playlist=4B5sfE1fjLs&controls=' + videoControls + '" frameborder="0" allowfullscreen></iframe>');
-    }
 
     /*----------------END----------------------------*/
     $(window).resize(function () {
         getVideoSize();
         bannerGreenBlockDraw();
     });
+
+
     function bannerGreenBlockDraw() {
-        var  img = document.createElement('img');
+        var img = document.createElement('img');
         img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background'),
             bannerWidth = $(window).width() / 2,
@@ -55,12 +41,11 @@ $(document).ready(function () {
         var bannerCurveTop = (bannerHeight / 2) - 55,
             bannerCurveBottom = (bannerHeight / 2) + 55,
             bannerCurvePoint = bannerWidth - 77;
-
         var ctx = banner.getContext('2d');
         banner.width = bannerWidth;
         banner.height = bannerHeight;
         ctx.clearRect(0, 0, banner.width, banner.height);
-        var pat=ctx.createPattern(img,"repeat");
+        var pat = ctx.createPattern(img, "repeat");
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(bannerWidth, 0);
@@ -90,21 +75,16 @@ $(document).ready(function () {
     }
 
     $('.video__play').click(function (e) {
-
-if($(window).width() >= 1000){
-    var modalWin = 960,
-        modalHeight = 540;
-}else{
-    modalWin = $(window).width() - 50;
-    modalHeight = (modalWin / 16 ) * 9;
-    $('.gf-modal__dialog.video-dialog').css({'max-width':   modalWin, 'height': modalHeight});
-}
-
-
-
-
         e.preventDefault();
-        $('.video-modal-content').append(' <iframe id="modalVideo" width="'+ modalWin+'" height="'+ modalHeight+'" src="https://www.youtube.com/embed/4B5sfE1fjLs?autoplay=1&mute=0&loop=1&playlist=4B5sfE1fjLs&controls=1" frameborder="0" allowfullscreen></iframe>');
+        if ($(window).width() >= 1000) {
+            var modalWin = 960,
+                modalHeight = 540;
+        } else {
+            modalWin = $(window).width() - 50;
+            modalHeight = (modalWin / 16 ) * 9;
+            $('.gf-modal__dialog.video-dialog').css({'max-width': modalWin, 'height': modalHeight});
+        }
+        $('.video-modal-content').append(' <video id="modalVideo"  width="' + modalWin + '" height="' + modalHeight + '"   autoplay controls> <source src="/assets/media/video/london.mp4" type="video/mp4"> </video>');
         $('#videoModal').modal('show');
     });
     $('.close-modal,#videoModal').click(function () {
@@ -123,8 +103,6 @@ if($(window).width() >= 1000){
         slidesToScroll: 1,
         dots: true,
         arrows: false,
-        autoplay: true,
-        autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 991,
@@ -144,7 +122,7 @@ if($(window).width() >= 1000){
                     }
                 }
             },
-  {
+            {
                 breakpoint: 575,
                 settings: {
                     slidesToShow: 1,
@@ -163,35 +141,31 @@ if($(window).width() >= 1000){
             // instead of a settings object
         ]
     });
-$('#stars-slider').slick({
+    $('#stars-slider').slick({
         infinite: true,
         slidesToShow: 2,
         slidesToScroll: 1,
         dots: true,
         arrows: false,
-        autoplay: true,
-        autoplaySpeed: 4000,
     });
-$('#press-slider,#users-slider').slick({
+    $('#press-slider,#users-slider').slick({
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
         dots: true,
         arrows: false,
-        autoplay: true,
-        autoplaySpeed: 4000,
     });
 
     $(document).click(function (e) {
         var container = $(".map-city-list");
-        if ( e.target.className == 'map-city'){
+        if (e.target.className == 'map-city') {
             container.fadeIn(300);
-        }else{
+        } else {
             container.fadeOut(300);
         }
     });
 
-    var windowCenter = function(){
+    var windowCenter = function () {
         var windowHeight = $(window).height() / 2.5;
         return windowHeight
     }
@@ -199,17 +173,16 @@ $('#press-slider,#users-slider').slick({
     $("#simbol-vs").stick_in_parent({
         offset_top: windowCenter()
     });
-    $(".b-compare__header-fix").stick_in_parent({
-    });
+    $(".b-compare__header-fix").stick_in_parent({});
 
 
-$('.b-compare__item').waypoint(function (direction) {
-         if (direction === 'down') {
+    $('.b-compare__item').waypoint(function (direction) {
+        if (direction === 'down') {
             $('.b-compare__item').removeClass('active');
             $(this.element).addClass('active');
-         }
+        }
     }, {
-        offset:  windowCenter() + 120
+        offset: windowCenter() + 120
     });
 
     $('.b-compare__item').waypoint(function (direction) {
@@ -221,7 +194,7 @@ $('.b-compare__item').waypoint(function (direction) {
         offset: windowCenter()
     });
 
- $('.b-compare__header').waypoint(function (direction) {
+    $('.b-compare__header').waypoint(function (direction) {
         if (direction === 'up') {
             $('.b-compare__item').removeClass('active');
         }
@@ -244,7 +217,7 @@ $('.b-compare__item').waypoint(function (direction) {
         offset: -270
     });
     $('.play-animation').waypoint(function () {
-            $(this.element).addClass('play');
+        $(this.element).addClass('play');
     }, {
         offset: '58%'
     });
@@ -258,39 +231,35 @@ $('.b-compare__item').waypoint(function (direction) {
     });
 
 
-
-
     $('.ticket-modal').click(function () {
         $('.error_msg').remove();
         var activationCode = $('#ticket-input').val();
-        if(activationCode ==''){
+        if (activationCode == '') {
             $(this).closest('.b-ticket-code__form').after('<p class="error_msg"> Введите код активации</p>');
-        }else{
+        } else {
             $('.gf-modal__ticket_code').val(activationCode);
             $('#gf-modal-ticket').modal('show');
 
         }
 
     });
-    $('.send-ticket-code').click(function(e){
+    $('.send-ticket-code').click(function (e) {
         e.preventDefault();
 
     });
-    
-    
-    
-    
+
+
     $('.form-submit').click(function () {
         var dataContent = $(this).data('content');
 
-        switch(dataContent) {
+        switch (dataContent) {
             case 'email':
                 $('.error_msg').remove();
                 var email = $('#inlineFormInputGroup');
                 if (email.val().match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i)) {
                     $('.gf-modal__text_title').text('Мы сообщим Вам о доступности приложения');
-                    $('.gf-modal__text_icon').attr('src','/assets/media/img/modal-letter.svg');
-                    $('.gf-modal__text_desc').html("Как только приложение станет доступно для скачивания, мы отправим Вам сообщение на email: <span >" +email.val() + "</span>");
+                    $('.gf-modal__text_icon').attr('src', '/assets/media/img/modal-letter.svg');
+                    $('.gf-modal__text_desc').html("Как только приложение станет доступно для скачивания, мы отправим Вам сообщение на email: <span >" + email.val() + "</span>");
                     $('#gf-modal-sm').modal('show');
                     email.val('');
                 } else {
@@ -301,10 +270,10 @@ $('.b-compare__item').waypoint(function (direction) {
             case 'phone':
                 $('.error_msg').remove();
                 var phone = $('#call-back-input');
-                if (phone.val().match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i)) {
+                 if (phone.val().match(/^\+?([0-9]{2}?)\s?(\(?[0-9]{3}\)?)\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$/i)) {
                     $('.gf-modal__text_title').text('Заявка на обратный звонок добавлена');
-                    $('.gf-modal__text_icon').attr('src','/assets/media/img/modal-phone.svg');
-                    $('.gf-modal__text_desc').html("Вы успешно оставили завявку на обратный звонок. В ближайшее время мы перезвоним Вам по номеру:  <span >" +phone.val() + "</span>");
+                    $('.gf-modal__text_icon').attr('src', '/assets/media/img/modal-phone.svg');
+                    $('.gf-modal__text_desc').html("Вы успешно оставили завявку на обратный звонок. В ближайшее время мы перезвоним Вам по номеру:  <span >" + phone.val() + "</span>");
                     $('#gf-modal-sm').modal('show');
                     phone.val('');
                 } else {

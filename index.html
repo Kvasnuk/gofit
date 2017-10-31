@@ -9,8 +9,8 @@
     <script src="/assets/js/html5shiv-printshiv.min.js"></script>
     <script src="/assets/js/respond.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-grid.min.css">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-reboot.min.css">-->
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-grid.min.css">-->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -64,6 +64,9 @@
 
 </div>
 <div class="video__wrapper">
+    <video id="home-page-video"  loop autoplay controls>
+        <source src="/assets/media/video/london.mp4" type="video/mp4">
+    </video>
     <canvas id="video__background" class="video__background"></canvas>
     <div class="container video-height">
         <div class="row">
@@ -522,13 +525,15 @@
                 <div class="mobile-app__header">
                     <h3 class="mobile-app__title">Скоро в вашем cмартфоне</h3>
                     <p class="mobile-app__excerpt">Находить клубы поблизости теперь просто и удобно.
-                       </p>
+                        Скачайте мобильное приложение GoFit прямо сейчас
+                        и получите пробное занятие бесплатно!
+                    </p>
                 </div>
                 <div class="mobile-app__content section__content_width">
 
-                    <a class="mobile-app__btn g-market" href="#">
+                    <a class="mobile-app__btn g-market not-active" href="#">
                     </a>
-                    <a class="mobile-app__btn app-store" href="#">
+                    <a class="mobile-app__btn app-store not-active" href="#">
                     </a>
                     <p class="mobile-app__msg"><span>Сообщить когда станет доступно</span></p>
                     <form id="mobileAppForm" class="mobile-app__form form-inline">
