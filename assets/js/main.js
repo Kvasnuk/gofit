@@ -1,7 +1,15 @@
 $(document).ready(function () {
-    var windowCenter = function () {
+    var getWindowWidth = function(){
+
+    }
+    var getWindowCenter = function () {
         return $(window).height() / 2.5;
     };
+    
+    
+    
+    
+    
     var compareOffset = function(direction){
        var  windowWidth = $(window).width(),
             offsetDown = 0,
@@ -31,6 +39,16 @@ $(document).ready(function () {
 
 
 
+$('.nav-link').click(function(){
+    $('.nav-item').removeClass('open');
+    $(this).parent('li').addClass('open');
+    $('.season-ticket__nav').toggleClass('open');
+
+});
+
+
+
+
 
 
     $('.b-compare__item').waypoint(function (direction) {
@@ -39,7 +57,7 @@ $(document).ready(function () {
             $(this.element).addClass('active');
         }
     }, {
-        offset: windowCenter() +  compareOffset('down')
+        offset: getWindowCenter() +  compareOffset('down')
     });
 
 
@@ -51,7 +69,7 @@ $(document).ready(function () {
             $(this.element).addClass('active');
         }
     }, {
-        offset: windowCenter() + compareOffset('up')
+        offset: getWindowCenter() + compareOffset('up')
     });
 
 
@@ -69,7 +87,7 @@ $(document).ready(function () {
     }
     if(window.location.pathname === "/" && $(window).width() >= 575){
         $("#simbol-vs").stick_in_parent({
-            offset_top: windowCenter()
+            offset_top: getWindowCenter()
         });
     }
     // $(".b-compare__header-fix").stick_in_parent({});
@@ -98,7 +116,7 @@ $(document).ready(function () {
 
     function bannerGreenBlockDraw() {
         var img = document.createElement('img');
-        img.src = "/assets/media/img/pattern-1.svg";
+                img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background'),
             bannerWidth = $(window).width() / 2,
             bannerHeight = 1 + ($(window).width() / 16) * 9;
@@ -151,7 +169,7 @@ $(document).ready(function () {
             modalHeight = (modalWin / 16 ) * 9;
             $('.gf-modal__dialog.video-dialog').css({'max-width': modalWin, 'height': modalHeight});
         }
-        $('.video-modal-content').append(' <video id="modalVideo"  width="' + modalWin + '" height="' + modalHeight + '"   autoplay controls> <source src="/assets/media/video/london.mp4" type="video/mp4"> </video>');
+        $('.video-modal-content').append(' <video id="modalVideo"  width="' + modalWin + '" height="' + modalHeight + '"   autoplay controls> <source src="/assets/media/video/gofit.mp4" type="video/mp4"> </video>');
         $('#videoModal').modal('show');
     });
     $('.close-modal,#videoModal').click(function () {
@@ -164,10 +182,9 @@ $(document).ready(function () {
             scrollTop: $("#map-gyms").offset().top
         }, 1000);
     });
-    $('#popular-activities-slider, #popular-gyms-slider').slick({
-        infinite: true,
+    $(' #popular-activities-slider').slick({
         slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToScroll: 4,
         dots: true,
         arrows: false,
         responsive: [
@@ -207,20 +224,161 @@ $(document).ready(function () {
             // settings: "unslick"
             // instead of a settings object
         ]
-    });
+    }).removeClass('slider-loading');
+    
+    $(' #popular-gyms-slider').slick({
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        dots: true,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+
+
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    }).removeClass('slider-loading');
     $('#stars-slider').slick({
         infinite: true,
         slidesToShow: 2,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
         dots: true,
         arrows: false,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+            // {
+            //     breakpoint: 400,
+            //     settings: {
+            //         slidesToShow: 1,
+            //         centerMode: false,
+            //         dotsClass: 'custom_paging',
+            //         customPaging: function (slider, i) {
+            //
+            //             return (i + 1) + '/' + slider.slideCount;
+            //         }
+            //     }
+            // },
+
+
+
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+
+
+
+
     });
     $('#press-slider,#users-slider').slick({
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToScroll: 4,
         dots: true,
         arrows: false,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    dotsClass: 'custom_paging',
+                    customPaging: function (slider, i) {
+
+                        return (i + 1) + '/' + slider.slideCount;
+                    }
+                }
+            },
+
+
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+
+
+
+
+
     });
 
     $(document).click(function (e) {
@@ -241,7 +399,7 @@ $(document).ready(function () {
             $('.b-compare__item').removeClass('active');
         }
     }, {
-        offset: windowCenter() - 120
+        offset: getWindowCenter() - 120
     });
 
     $('.b-compare__header').waypoint(function (direction) {
@@ -324,4 +482,8 @@ $(document).ready(function () {
                 break;
         }
     });
+
+
+
+
 });

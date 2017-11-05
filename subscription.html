@@ -21,14 +21,24 @@
 <header class="b-header header-white">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-6 d-flex justify-content-between justify-content-lg-start">
+                <div class="mobile-menu-block">
+                    <div class="mobile-menu__burger ">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
                 <a href="/" class="b-header__logo">
                     <img src="/assets/media/img/gofit-logo-dark.svg" alt="Gofit">
                 </a>
-                <a href="#" class="b-header__menu-link btn header-register-btn dark disable">Абонемент</a>
+                <a href="#" class="b-header__menu-link btn header-register-btn dark disable header-register-desktop">Абонемент</a>
+                <a href="#" class="b-header__menu-link btn header-register-btn dark header-register-mobile">Регистрация</a>
+
             </div>
             <div class="col-md-12 col-lg-6">
-                <ul class="b-header__menu">
+                <ul class="b-header__menu d-flex justify-content-lg-between  justify-content-start flex-column flex-lg-row">
                     <li class="b-header__menu-item">
                         <a href="#" class="b-header__menu-link dark">Занятия</a>
                     </li>
@@ -45,7 +55,7 @@
                         <a href="#" class="b-header__menu-link dark">Войти</a>
                     </li>
                     <li class="b-header__menu-item">
-                        <a href="#" class="b-header__menu-link btn header-register-btn dark">Регистрация</a>
+                        <a href="#" class="b-header__menu-link btn header-register-btn dark header-register-desktop">Регистрация</a>
                     </li>
                 </ul>
             </div>
@@ -62,8 +72,8 @@
         <div class="row">
             <div class="col-12">
                 <ul class="nav nav-tabs col-12 season-ticket__nav" role="tablist">
-                    <li class="nav-item">
-                        <a class="season-ticket__nav nav-link active" data-toggle="tab" href="#week" role="tab">7
+                    <li class="nav-item open">
+                        <a class=" nav-link active" data-toggle="tab" href="#week" role="tab">7
                             дней</a>
                     </li>
                     <li class="nav-item">
@@ -90,12 +100,13 @@
             <div class="row">
                 <div class="tab-content col-12">
                     <div class="tab-pane active" id="week" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-4 cart-b-offset">
+
+                        <div class="row ticket_slider flex-nowrap flex-lg-wrap">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card classic">
                                     <div class="b-card__header classic ">Classic</div>
                                     <div class="b-card__price classic d-flex flex-column justify-content-center">
-                                        <p><b>14 грн</b> Цена за один день</p>
+                                        <p><b>14 <span>грн</span><span class="sm-day">/день</span></b>  <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description">
                                         <p class="b-card__description_title classic"><span>classic</span>абонемент
@@ -126,16 +137,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Самые популярные клубы</p>
+                                            <p>Фитнес Лэнд, Фитнес Тайм, СпортЛэн, Мисс Фитнес, Мисс Фитнес</p>
+                                        </div>
                                         <a href="#" class="b-card__action classic">Оформить за 399 грн.</a>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card business ">
                                     <div class="b-card__header business">business</div>
                                     <div class="b-card__price business d-flex flex-column justify-content-center">
-                                        <p><b>27 грн</b> Цена за один день</p>
+                                        <p><b>27<span>грн</span><span class="sm-day">/день</span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title business"><span>business</span>абонемент
@@ -166,16 +181,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Клубы повышенной комфортности</p>
+                                            <p>X-fit, Зебра, WeGym, ARMA, Планета Фитнес, Gym Fitness Studio</p>
+                                        </div>
                                         <a href="#" class="b-card__action business">Оформить за 799 грн.</a>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card premium">
                                     <div class="b-card__header premium">premium</div>
                                     <div class="b-card__price premium d-flex flex-column justify-content-center">
-                                        <p><b>44 грн</b> Цена за один день</p>
+                                        <p><b>44 <span>грн<span class="sm-day">/день</span></span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title premium"><span>premium</span>абонемент
@@ -206,10 +225,17 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Для самых требовательных</p>
+                                            <p>Аквапарк & SPA курорт Царь Град, X-Fit Premium, Сеть EMS студий 5fit</p>
+                                        </div>
                                         <a href="#" class="b-card__action  premium">Оформить за 1299 грн.</a>
                                     </div>
+
                                 </div>
                             </div>
+                            </div>
+                        <div class="row ticket_options">
                             <div class="col-md-4 b-r-dark">
                                 <div class="b-card__gyms">
                                     <p class="bold">Самые популярные клубы и сети</p>
@@ -281,17 +307,88 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <button class="ticket-compare-btn" data-toggle="modal" data-target="#week-ticket">Показать сравнение</button>
+                        <div   id="week-ticket" class="modal fade ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header"><span class="close-modal" data-dismiss="modal" aria-label="Close">К списку абонементов</span></div>
+                                    <div class="modal-body">
+                                       <ul class="b-ticket-options__list">
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title head">Сравнение возможностей</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic head"><span>C</span></span>
+                                                   <span class="option-bussines head"><span>B</span></span>
+                                                   <span class="option-premium head"><span>P</span></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked check"></span>
+                                                   <span class="option-bussines checked check"></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">30 days of file recovery</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked "></span>
+                                                   <span class="option-bussines checked check"></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked"></span>
+                                                   <span class="option-bussines checked "></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked check"></span>
+                                                   <span class="option-bussines checked check"></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">30 days of file recovery</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked "></span>
+                                                   <span class="option-bussines checked check"></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                           <li class="b-ticket-options__item">
+                                               <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                               <p class="b-ticket-options__compare">
+                                                   <span class="option-classic checked"></span>
+                                                   <span class="option-bussines checked "></span>
+                                                   <span class="option-premium checked check"></span>
+                                               </p>
+                                           </li>
+                                       </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hide-scroll"></p>
                     </div>
 
 
 
                     <div class="tab-pane" id="month" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-4 cart-b-offset">
+                        <div class="row ticket_slider flex-nowrap flex-lg-wrap">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card classic">
                                     <div class="b-card__header classic ">Classic</div>
                                     <div class="b-card__price classic d-flex flex-column justify-content-center">
-                                        <p><b>24 грн</b> Цена за один день</p>
+                                        <p><b>14 <span>грн</span><span class="sm-day">/день</span></b>  <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description">
                                         <p class="b-card__description_title classic"><span>classic</span>абонемент
@@ -322,16 +419,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Самые популярные клубы</p>
+                                            <p>Фитнес Лэнд, Фитнес Тайм, СпортЛэн, Мисс Фитнес, Мисс Фитнес</p>
+                                        </div>
                                         <a href="#" class="b-card__action classic">Оформить за 399 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card business ">
                                     <div class="b-card__header business">business</div>
                                     <div class="b-card__price business d-flex flex-column justify-content-center">
-                                        <p><b>57 грн</b> Цена за один день</p>
+                                        <p><b>27<span>грн</span><span class="sm-day">/день</span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title business"><span>business</span>абонемент
@@ -362,16 +463,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Клубы повышенной комфортности</p>
+                                            <p>X-fit, Зебра, WeGym, ARMA, Планета Фитнес, Gym Fitness Studio</p>
+                                        </div>
                                         <a href="#" class="b-card__action business">Оформить за 799 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card premium">
                                     <div class="b-card__header premium">premium</div>
                                     <div class="b-card__price premium d-flex flex-column justify-content-center">
-                                        <p><b>74 грн</b> Цена за один день</p>
+                                        <p><b>44 <span>грн<span class="sm-day">/день</span></span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title premium"><span>premium</span>абонемент
@@ -402,10 +507,17 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Для самых требовательных</p>
+                                            <p>Аквапарк & SPA курорт Царь Град, X-Fit Premium, Сеть EMS студий 5fit</p>
+                                        </div>
                                         <a href="#" class="b-card__action  premium">Оформить за 1299 грн.</a>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ticket_options">
                             <div class="col-md-4 b-r-dark">
                                 <div class="b-card__gyms">
                                     <p class="bold">Самые популярные клубы и сети</p>
@@ -441,7 +553,7 @@
                                         partners
                                     </li>
                                     <li class="b-card__options_item">Priority email support</li>
-                        
+
                                 </ul>
                             </div>
                             <div class="col-md-4 b-r-dark">
@@ -477,14 +589,85 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <button class="ticket-compare-btn" data-toggle="modal" data-target="#month-ticket">Показать сравнение</button>
+                        <div   id="month-ticket" class="modal fade ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header"><span class="close-modal" data-dismiss="modal" aria-label="Close">К списку абонементов</span></div>
+                                    <div class="modal-body">
+                                        <ul class="b-ticket-options__list">
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title head">Сравнение возможностей</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic head"><span>C</span></span>
+                                                    <span class="option-bussines head"><span>B</span></span>
+                                                    <span class="option-premium head"><span>P</span></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hide-scroll"></p>
                     </div>
                     <div class="tab-pane" id="three-months" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-4 cart-b-offset">
+                        <div class="row ticket_slider flex-nowrap flex-lg-wrap">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card classic">
                                     <div class="b-card__header classic ">Classic</div>
                                     <div class="b-card__price classic d-flex flex-column justify-content-center">
-                                        <p><b>24 грн</b> Цена за один день</p>
+                                        <p><b>14 <span>грн</span><span class="sm-day">/день</span></b>  <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description">
                                         <p class="b-card__description_title classic"><span>classic</span>абонемент
@@ -515,16 +698,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Самые популярные клубы</p>
+                                            <p>Фитнес Лэнд, Фитнес Тайм, СпортЛэн, Мисс Фитнес, Мисс Фитнес</p>
+                                        </div>
                                         <a href="#" class="b-card__action classic">Оформить за 399 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card business ">
                                     <div class="b-card__header business">business</div>
                                     <div class="b-card__price business d-flex flex-column justify-content-center">
-                                        <p><b>57 грн</b> Цена за один день</p>
+                                        <p><b>27<span>грн</span><span class="sm-day">/день</span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title business"><span>business</span>абонемент
@@ -555,16 +742,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Клубы повышенной комфортности</p>
+                                            <p>X-fit, Зебра, WeGym, ARMA, Планета Фитнес, Gym Fitness Studio</p>
+                                        </div>
                                         <a href="#" class="b-card__action business">Оформить за 799 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card premium">
                                     <div class="b-card__header premium">premium</div>
                                     <div class="b-card__price premium d-flex flex-column justify-content-center">
-                                        <p><b>74 грн</b> Цена за один день</p>
+                                        <p><b>44 <span>грн<span class="sm-day">/день</span></span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title premium"><span>premium</span>абонемент
@@ -595,10 +786,17 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Для самых требовательных</p>
+                                            <p>Аквапарк & SPA курорт Царь Град, X-Fit Premium, Сеть EMS студий 5fit</p>
+                                        </div>
                                         <a href="#" class="b-card__action  premium">Оформить за 1299 грн.</a>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ticket_options">
                             <div class="col-md-4 b-r-dark">
                                 <div class="b-card__gyms">
                                     <p class="bold">Самые популярные клубы и сети</p>
@@ -634,7 +832,7 @@
                                         partners
                                     </li>
                                     <li class="b-card__options_item">Priority email support</li>
-                        
+
                                 </ul>
                             </div>
                             <div class="col-md-4 b-r-dark">
@@ -670,14 +868,85 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <button class="ticket-compare-btn" data-toggle="modal" data-target="#three-month-ticket">Показать сравнение</button>
+                        <div   id="three-month-ticket" class="modal fade ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header"><span class="close-modal" data-dismiss="modal" aria-label="Close">К списку абонементов</span></div>
+                                    <div class="modal-body">
+                                        <ul class="b-ticket-options__list">
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title head">Сравнение возможностей</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic head"><span>C</span></span>
+                                                    <span class="option-bussines head"><span>B</span></span>
+                                                    <span class="option-premium head"><span>P</span></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hide-scroll"></p>
                     </div>
                     <div class="tab-pane" id="half-a-year" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-4 cart-b-offset">
+                        <div class="row ticket_slider flex-nowrap flex-lg-wrap">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card classic">
                                     <div class="b-card__header classic ">Classic</div>
                                     <div class="b-card__price classic d-flex flex-column justify-content-center">
-                                        <p><b>24 грн</b> Цена за один день</p>
+                                        <p><b>14 <span>грн</span><span class="sm-day">/день</span></b>  <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description">
                                         <p class="b-card__description_title classic"><span>classic</span>абонемент
@@ -708,16 +977,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Самые популярные клубы</p>
+                                            <p>Фитнес Лэнд, Фитнес Тайм, СпортЛэн, Мисс Фитнес, Мисс Фитнес</p>
+                                        </div>
                                         <a href="#" class="b-card__action classic">Оформить за 399 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card business ">
                                     <div class="b-card__header business">business</div>
                                     <div class="b-card__price business d-flex flex-column justify-content-center">
-                                        <p><b>57 грн</b> Цена за один день</p>
+                                        <p><b>27<span>грн</span><span class="sm-day">/день</span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title business"><span>business</span>абонемент
@@ -748,16 +1021,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Клубы повышенной комфортности</p>
+                                            <p>X-fit, Зебра, WeGym, ARMA, Планета Фитнес, Gym Fitness Studio</p>
+                                        </div>
                                         <a href="#" class="b-card__action business">Оформить за 799 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card premium">
                                     <div class="b-card__header premium">premium</div>
                                     <div class="b-card__price premium d-flex flex-column justify-content-center">
-                                        <p><b>74 грн</b> Цена за один день</p>
+                                        <p><b>44 <span>грн<span class="sm-day">/день</span></span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title premium"><span>premium</span>абонемент
@@ -788,10 +1065,17 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Для самых требовательных</p>
+                                            <p>Аквапарк & SPA курорт Царь Град, X-Fit Premium, Сеть EMS студий 5fit</p>
+                                        </div>
                                         <a href="#" class="b-card__action  premium">Оформить за 1299 грн.</a>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ticket_options">
                             <div class="col-md-4 b-r-dark">
                                 <div class="b-card__gyms">
                                     <p class="bold">Самые популярные клубы и сети</p>
@@ -827,7 +1111,7 @@
                                         partners
                                     </li>
                                     <li class="b-card__options_item">Priority email support</li>
-                        
+
                                 </ul>
                             </div>
                             <div class="col-md-4 b-r-dark">
@@ -863,14 +1147,85 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <button class="ticket-compare-btn" data-toggle="modal" data-target="#half-year-ticket">Показать сравнение</button>
+                        <div   id="half-year-ticket" class="modal fade ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header"><span class="close-modal" data-dismiss="modal" aria-label="Close">К списку абонементов</span></div>
+                                    <div class="modal-body">
+                                        <ul class="b-ticket-options__list">
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title head">Сравнение возможностей</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic head"><span>C</span></span>
+                                                    <span class="option-bussines head"><span>B</span></span>
+                                                    <span class="option-premium head"><span>P</span></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hide-scroll"></p>
                     </div>
                     <div class="tab-pane" id="year" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-4 cart-b-offset">
+                        <div class="row ticket_slider flex-nowrap flex-lg-wrap">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card classic">
                                     <div class="b-card__header classic ">Classic</div>
                                     <div class="b-card__price classic d-flex flex-column justify-content-center">
-                                        <p><b>24 грн</b> Цена за один день</p>
+                                        <p><b>14 <span>грн</span><span class="sm-day">/день</span></b>  <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description">
                                         <p class="b-card__description_title classic"><span>classic</span>абонемент
@@ -901,16 +1256,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Самые популярные клубы</p>
+                                            <p>Фитнес Лэнд, Фитнес Тайм, СпортЛэн, Мисс Фитнес, Мисс Фитнес</p>
+                                        </div>
                                         <a href="#" class="b-card__action classic">Оформить за 399 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card business ">
                                     <div class="b-card__header business">business</div>
                                     <div class="b-card__price business d-flex flex-column justify-content-center">
-                                        <p><b>57 грн</b> Цена за один день</p>
+                                        <p><b>27<span>грн</span><span class="sm-day">/день</span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title business"><span>business</span>абонемент
@@ -941,16 +1300,20 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Клубы повышенной комфортности</p>
+                                            <p>X-fit, Зебра, WeGym, ARMA, Планета Фитнес, Gym Fitness Studio</p>
+                                        </div>
                                         <a href="#" class="b-card__action business">Оформить за 799 грн.</a>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                            <div class="col-md-4 cart-b-offset">
+                            <div class="col-10 col-sm-5 col-md-5 col-lg-4 cart-b-offset">
                                 <div class="b-card premium">
                                     <div class="b-card__header premium">premium</div>
                                     <div class="b-card__price premium d-flex flex-column justify-content-center">
-                                        <p><b>74 грн</b> Цена за один день</p>
+                                        <p><b>44 <span>грн<span class="sm-day">/день</span></span></b> <span>Цена за один день</span></p>
                                     </div>
                                     <div class="b-card__description ">
                                         <p class="b-card__description_title premium"><span>premium</span>абонемент
@@ -981,10 +1344,17 @@
                                                     class="item-count">0</span>Стретчинг студии
                                             </li>
                                         </ul>
+                                        <div class="b-card__gyms hidden-lg-up">
+                                            <p class="bold">Для самых требовательных</p>
+                                            <p>Аквапарк & SPA курорт Царь Град, X-Fit Premium, Сеть EMS студий 5fit</p>
+                                        </div>
                                         <a href="#" class="b-card__action  premium">Оформить за 1299 грн.</a>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ticket_options">
                             <div class="col-md-4 b-r-dark">
                                 <div class="b-card__gyms">
                                     <p class="bold">Самые популярные клубы и сети</p>
@@ -1020,7 +1390,7 @@
                                         partners
                                     </li>
                                     <li class="b-card__options_item">Priority email support</li>
-                        
+
                                 </ul>
                             </div>
                             <div class="col-md-4 b-r-dark">
@@ -1056,15 +1426,88 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <button class="ticket-compare-btn" data-toggle="modal" data-target="#year-ticket">Показать сравнение</button>
+                        <div   id="year-ticket" class="modal fade ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header"><span class="close-modal" data-dismiss="modal" aria-label="Close">К списку абонементов</span></div>
+                                    <div class="modal-body">
+                                        <ul class="b-ticket-options__list">
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title head">Сравнение возможностей</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic head"><span>C</span></span>
+                                                    <span class="option-bussines head"><span>B</span></span>
+                                                    <span class="option-premium head"><span>P</span></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">1 TB (1024 GB) of space</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked check"></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">30 days of file recovery</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked "></span>
+                                                    <span class="option-bussines checked check"></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                            <li class="b-ticket-options__item">
+                                                <p class="b-ticket-options__title">256-bit AES and SSL/TLS encryption</p>
+                                                <p class="b-ticket-options__compare">
+                                                    <span class="option-classic checked"></span>
+                                                    <span class="option-bussines checked "></span>
+                                                    <span class="option-premium checked check"></span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="hide-scroll"></p>
                     </div>
                 </div>
             </div>
             <div class="row b-ticket-code">
-                <div class="col-12 col-md-6 pr-0">
+                <div class="col-12 col-md-6 pr-md-0">
                     <div class="block__title semibold b-ticket-code__content">
                         <h3 class="block__title semibold b-ticket-code__title">Активация абонемента по коду</h3>
-                        <p class="block__description b-ticket-code__description">Активируя абонемент GoFit с помощью бонус-кода, вы добавляете его
+                        <p class="block__description b-ticket-code__description sm-hide-block">Активируя абонемент GoFit с помощью бонус-кода, вы добавляете его
+                        <p class="block__description b-ticket-code__description sm-show-block ">Активируя абонемент  вы добавляете его
                             в личный кабинет своего аккаунта.</p>
+                        <figure class="b-compare__logo gofit-logo b-ticket-code__card  b-ticket-code__card--md"></figure>
                         <form id="activateTicket" class="mobile-app__form form-inline b-ticket-code__form">
                             <div class="input-group">
                                 <input type="text" class="form-control form-input ticket-input" id="ticket-input"
@@ -1076,7 +1519,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <figure class="b-compare__logo gofit-logo b-ticket-code__card"></figure>
+                    <figure class="b-compare__logo gofit-logo b-ticket-code__card  b-ticket-code__card--lg"></figure>
                 </div>
             </div>
         </div>
@@ -1097,13 +1540,14 @@
             </div>
         </div>
         <div class="row b-benefits__item">
+            <div class="col-12 col-sm-6 b-benefits__img img-2 play-animation">
+                <img src="/assets/media/img/no-img.png" alt="">
+            </div>
             <div class="col-12 col-sm-6 b-benefits__desc d-flex flex-column justify-content-center">
                 <h5>Широкий ассортимент</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
             </div>
-            <div class="col-12 col-sm-6 b-benefits__img img-2 play-animation">
-                <img src="/assets/media/img/no-img.png" alt="">
-            </div>
+
         </div>
         <div class="row b-benefits__item">
             <div class="col-12 col-sm-6 b-benefits__img img-3">
@@ -1122,7 +1566,22 @@
         <h3 class=" block__title semibold  text-center b-comments__title">О нас говорят звезды фитнеса</h3>
         <div id="stars-slider" class="row">
 
-            <div class="col-12 col-md-6 pt-2 pb-3">
+            <div class=" col-12 col-sm-6 col-md-4  col-lg-6 pt-2 pb-3 pr-sm-0 pr-0">
+                <div class="stars-slider__item d-flex ">
+                    <img class="stars-slider__img   hidden-md-down" src="/assets/media/img/com.png" alt="">
+                    <img class="stars-slider__img   hidden-lg-up " src="/assets/media/img/sm-img.png" alt="">
+
+                    <div class="stars-slider__comment d-flex flex-column justify-content-between">
+                        <p>“Как музыканту, мне часто приходится гастролировать по всей стране. GoFit дает мне
+                            возможность поддерживать себя в форме, где бы я не находилась.”</p>
+                        <p class="stars-slider__user ">
+                            <span>Карина Истомина</span>
+                            DJ и музыкант
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4  col-lg-6 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="stars-slider__item d-flex ">
                     <img class="stars-slider__img   " src="assets/media/img/com.png" alt="">
                     <div class="stars-slider__comment d-flex flex-column justify-content-between">
@@ -1135,7 +1594,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-6 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="stars-slider__item d-flex ">
                     <img class="stars-slider__img   " src="assets/media/img/com.png" alt="">
                     <div class="stars-slider__comment d-flex flex-column justify-content-between">
@@ -1148,7 +1607,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-6 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="stars-slider__item d-flex ">
                     <img class="stars-slider__img   " src="assets/media/img/com.png" alt="">
                     <div class="stars-slider__comment d-flex flex-column justify-content-between">
@@ -1161,20 +1620,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 pt-2 pb-3">
-                <div class="stars-slider__item d-flex ">
-                    <img class="stars-slider__img   " src="assets/media/img/com.png" alt="">
-                    <div class="stars-slider__comment d-flex flex-column justify-content-between">
-                        <p>“Как музыканту, мне часто приходится гастролировать по всей стране. GoFit дает мне
-                            возможность поддерживать себя в форме, где бы я не находилась.”</p>
-                        <p class="stars-slider__user ">
-                            <span>Карина Истомина</span>
-                            DJ и музыкант
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-6 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="stars-slider__item d-flex ">
                     <img class="stars-slider__img   " src="assets/media/img/com.png" alt="">
                     <div class="stars-slider__comment d-flex flex-column justify-content-between">
@@ -1192,7 +1638,7 @@
 
         <h3 class="block__title semibold text-center press-slider__title">Пресса о нас</h3>
         <div id="press-slider" class="row">
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg.png');">
@@ -1206,7 +1652,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg.png');">
@@ -1220,7 +1666,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg.png');">
@@ -1234,7 +1680,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg-2.png');">
@@ -1248,7 +1694,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg.png');">
@@ -1262,7 +1708,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg-2.png');">
@@ -1276,7 +1722,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg.png');">
@@ -1290,7 +1736,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="flip-container">
                     <div class="flipper">
                         <div class="front" style=" background-image: url('/assets/media/img/flipper-bg-2.png');">
@@ -1308,7 +1754,7 @@
 
         <h3 class="block__title semibold  text-center users-slider__title">Наши пользователи о нас</h3>
         <div id="users-slider" class="row">
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment">
                     <p class="users-slider__text">
                         Как музыканту, мне часто приходится гастролировать по всей стране…
@@ -1316,13 +1762,13 @@
                     <a class="users-slider__link fb" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment" style=" background-image: url('/assets/media/img/fb-bg.png');">
 
                     <a class="users-slider__link instagram" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment">
                     <p class="users-slider__text">
                         Как музыканту, мне часто приходится гастролировать по всей стране…
@@ -1330,13 +1776,13 @@
                     <a class="users-slider__link fb" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment" style=" background-image: url('/assets/media/img/fb-bg.png');">
 
                     <a class="users-slider__link instagram" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0" >
                 <div class="users-slider__comment">
                     <p class="users-slider__text">
                         Как музыканту, мне часто приходится гастролировать по всей стране…
@@ -1344,13 +1790,13 @@
                     <a class="users-slider__link fb" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment" style=" background-image: url('/assets/media/img/fb-bg.png');">
 
                     <a class="users-slider__link instagram" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment">
                     <p class="users-slider__text">
                         Как музыканту, мне часто приходится гастролировать по всей стране…
@@ -1358,7 +1804,7 @@
                     <a class="users-slider__link fb" href="#" target="_blank">@karly411</a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 pt-2 pb-3">
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3 pt-2 pb-3 pr-sm-0 pr-0">
                 <div class="users-slider__comment" style=" background-image: url('/assets/media/img/fb-bg.png');">
 
                     <a class="users-slider__link instagram" href="#" target="_blank">@karly411</a>
@@ -1522,7 +1968,7 @@
                 <div class="b-call-back__content">
                     <h3 class="b-call-back__title">Чего Вы ждете?</h3>
                     <p class="b-call-back__excerpt">Зарегистрируйтесь и получите бесплатное занятие прямо сейчас!</p>
-                    <a class=" free-class__btn btn__yellow" href="">Получить бесплатное занятие</a>
+                    <a class=" free-class__btn btn__yellow call-back-btn" href="">Получить бесплатное занятие</a>
                 </div>
             </div>
         </div>
