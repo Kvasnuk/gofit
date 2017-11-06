@@ -1,67 +1,49 @@
 $(document).ready(function () {
-    var getWindowWidth = function(){
-
-    }
     var getWindowCenter = function () {
         return $(window).height() / 2.5;
     };
-    
-    
-    
-    
-    
-    var compareOffset = function(direction){
-       var  windowWidth = $(window).width(),
+    $('.nav-link').click(function () {
+        $('.nav-item').removeClass('open');
+        $(this).parent('li').addClass('open');
+        $('.season-ticket__nav').toggleClass('open');
+    });
+    /*home page VS block  get offset top for start waypoint function*/
+    var compareOffset = function (direction) {
+        var windowWidth = $(window).width(),
             offsetDown = 0,
             offsetUp = 0;
 
-        if(windowWidth >= 992  ){
+        if (windowWidth >= 992) {
             offsetDown = 120;
             offsetUp = 0;
-        }else  if(windowWidth >= 768  ){
-            offsetDown= 10;
+        } else if (windowWidth >= 768) {
+            offsetDown = 10;
             offsetUp = -140;
-        }else  if(windowWidth >= 640  ){
+        } else if (windowWidth >= 640) {
             offsetDown = -15;
             offsetUp = -130;
-        }else  if(windowWidth >= 575  ){
+        } else if (windowWidth >= 575) {
             offsetDown = -40;
             offsetUp = -120;
         }
 
-        if(direction === "down"){
-            return   offsetDown ;
-        }else  if(direction === "up"){
-            return   offsetUp ;
+        if (direction === "down") {
+            return offsetDown;
+        } else if (direction === "up") {
+            return offsetUp;
         }
 
     };
 
-
-
-$('.nav-link').click(function(){
-    $('.nav-item').removeClass('open');
-    $(this).parent('li').addClass('open');
-    $('.season-ticket__nav').toggleClass('open');
-
-});
-
-
-
-
-
-
+    /*home page VS block   waypoints */
     $('.b-compare__item').waypoint(function (direction) {
         if (direction === 'down') {
             $('.b-compare__item').removeClass('active');
             $(this.element).addClass('active');
         }
     }, {
-        offset: getWindowCenter() +  compareOffset('down')
+        offset: getWindowCenter() + compareOffset('down')
     });
-
-
-
 
     $('.b-compare__item').waypoint(function (direction) {
         if (direction === 'up') {
@@ -71,36 +53,57 @@ $('.nav-link').click(function(){
     }, {
         offset: getWindowCenter() + compareOffset('up')
     });
+    $('.b-compare__header').waypoint(function (direction) {
+        if (direction === 'up') {
+            $('.b-compare__item').removeClass('active');
+        }
+    }, {
+        offset: getWindowCenter() - 120
+    });
+
+    $('.b-compare__header').waypoint(function (direction) {
+        if (direction === 'down') {
+            $('.b-compare__header-fix').addClass('on');
+        }
+    }, {
+        offset: -195
+    });
+    
+    $('.b-compare__header').waypoint(function (direction) {
+        if (direction === 'up') {
+            $('.b-compare__header-fix ').removeClass('on');
+        }
+    }, {
+        offset: -270
+    });
+    $('.play-animation').waypoint(function () {
+        $(this.element).addClass('play');
+    }, {
+        offset: '58%'
+    });
 
 
-
-
-
-
-    /* init video bachground*/
     if (window.location.pathname === "/" && $(window).width() >= 992) {
         getVideoSize();
         bannerGreenBlockDraw();
-         $(".b-compare__header-fix").stick_in_parent({});
-    }else if (window.location.pathname === "/" && $(window).width() < 992){
+        $(".b-compare__header-fix").stick_in_parent({});
+    } else if (window.location.pathname === "/" && $(window).width() < 992) {
         $('#home-page-video').remove();
     }
-    if(window.location.pathname === "/" && $(window).width() >= 575){
+    if (window.location.pathname === "/" && $(window).width() >= 575) {
         $("#simbol-vs").stick_in_parent({
             offset_top: getWindowCenter()
         });
     }
-    // $(".b-compare__header-fix").stick_in_parent({});
     /*show  mobile menu */
     $('.mobile-menu__burger').click(function () {
         $(this).toggleClass('open');
         $('.b-header__menu ').toggleClass('open');
     });
-    /*-----------------ADD HOME PAGE VIDEO----------------------------*/
-
+    
     function getVideoSize() {
         var windowWidth = $(window).width(),
-            videoHeight  = (windowWidth / 16) * 9;
+            videoHeight = (windowWidth / 16) * 9;
         if (videoHeight > 859) {
             videoHeight = 860;
         }
@@ -109,14 +112,14 @@ $('.nav-link').click(function(){
 
     /*----------------END----------------------------*/
     $(window).resize(function () {
-        getVideoSize();
-        bannerGreenBlockDraw();
+        if (window.location.pathname === "/") {
+            getVideoSize();
+            bannerGreenBlockDraw();
+        }
     });
-
-
     function bannerGreenBlockDraw() {
         var img = document.createElement('img');
-                img.src = "/assets/media/img/pattern-1.svg";
+        img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background'),
             bannerWidth = $(window).width() / 2,
             bannerHeight = 1 + ($(window).width() / 16) * 9;
@@ -140,10 +143,12 @@ $('.nav-link').click(function(){
         ctx.lineTo(bannerWidth, bannerHeight);
         ctx.lineTo(0, bannerHeight);
         ctx.lineTo(0, 0);
-        ctx.fillStyle = 'rgba(29, 208, 186, 0.98)';
+        ctx.globalAlpha = 0.95;
+        ctx.fillStyle = 'rgb(29, 208, 186)';
         ctx.strokeStyle = "transparent";
         ctx.fill();
         ctx.stroke();
+
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(bannerWidth, 0);
@@ -153,6 +158,7 @@ $('.nav-link').click(function(){
         ctx.lineTo(bannerWidth, bannerHeight);
         ctx.lineTo(0, bannerHeight);
         ctx.lineTo(0, 0);
+        ctx.globalAlpha = 0.99;
         ctx.fillStyle = pat;
         ctx.strokeStyle = "transparent";
         ctx.fill();
@@ -225,12 +231,13 @@ $('.nav-link').click(function(){
             // instead of a settings object
         ]
     }).removeClass('slider-loading');
-    
+
     $(' #popular-gyms-slider').slick({
         slidesToShow: 4,
         slidesToScroll: 4,
         dots: true,
         arrows: false,
+        infinite: true,
         responsive: [
             {
                 breakpoint: 991,
@@ -306,29 +313,7 @@ $('.nav-link').click(function(){
                     }
                 }
             },
-            // {
-            //     breakpoint: 400,
-            //     settings: {
-            //         slidesToShow: 1,
-            //         centerMode: false,
-            //         dotsClass: 'custom_paging',
-            //         customPaging: function (slider, i) {
-            //
-            //             return (i + 1) + '/' + slider.slideCount;
-            //         }
-            //     }
-            // },
-
-
-
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
-
-
-
-
     });
     $('#press-slider,#users-slider').slick({
         infinite: true,
@@ -368,17 +353,7 @@ $('.nav-link').click(function(){
                     }
                 }
             },
-
-
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
-
-
-
-
-
     });
 
     $(document).click(function (e) {
@@ -389,48 +364,12 @@ $('.nav-link').click(function(){
             container.fadeOut(300);
         }
     });
-
-
-
-
-
-    $('.b-compare__header').waypoint(function (direction) {
-        if (direction === 'up') {
-            $('.b-compare__item').removeClass('active');
-        }
-    }, {
-        offset: getWindowCenter() - 120
-    });
-
-    $('.b-compare__header').waypoint(function (direction) {
-        if (direction === 'down') {
-            $('.b-compare__header-fix').addClass('on');
-        }
-    }, {
-        offset: -195
-    });
-    $('.b-compare__header').waypoint(function (direction) {
-        if (direction === 'up') {
-            $('.b-compare__header-fix ').removeClass('on');
-        }
-    }, {
-        offset: -270
-    });
-    $('.play-animation').waypoint(function () {
-        $(this.element).addClass('play');
-    }, {
-        offset: '58%'
-    });
-
-
     $('.gf-modal__sm_close').click(function () {
         $(this).closest('.modal').modal('hide');
     })
     $('.mobile-app__btn').click(function (e) {
         e.preventDefault();
     });
-
-
     $('.ticket-modal').click(function () {
         $('.error_msg').remove();
         var activationCode = $('#ticket-input').val();
@@ -439,19 +378,14 @@ $('.nav-link').click(function(){
         } else {
             $('.gf-modal__ticket_code').val(activationCode);
             $('#gf-modal-ticket').modal('show');
-
         }
-
     });
     $('.send-ticket-code').click(function (e) {
         e.preventDefault();
 
     });
-
-
     $('.form-submit').click(function () {
         var dataContent = $(this).data('content');
-
         switch (dataContent) {
             case 'email':
                 $('.error_msg').remove();
@@ -470,7 +404,7 @@ $('.nav-link').click(function(){
             case 'phone':
                 $('.error_msg').remove();
                 var phone = $('#call-back-input');
-                 if (phone.val().match(/^\+?([0-9]{2}?)\s?(\(?[0-9]{3}\)?)\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$/i)) {
+                if (phone.val().match(/^\+?([0-9]{2}?)\s?(\(?[0-9]{3}\)?)\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$/i)) {
                     $('.gf-modal__text_title').text('Заявка на обратный звонок добавлена');
                     $('.gf-modal__text_icon').attr('src', '/assets/media/img/modal-phone.svg');
                     $('.gf-modal__text_desc').html("Вы успешно оставили завявку на обратный звонок. В ближайшее время мы перезвоним Вам по номеру:  <span >" + phone.val() + "</span>");
@@ -482,8 +416,4 @@ $('.nav-link').click(function(){
                 break;
         }
     });
-
-
-
-
 });
