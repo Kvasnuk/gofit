@@ -68,6 +68,8 @@
         <source src="/assets/media/video/gofit.mp4" type="video/mp4">
     </video>
     <canvas id="video__background" class="video__background"></canvas>
+    <canvas id="video__blur"  class="video__blur"></canvas>
+
     <div class="container video-height">
         <div class="row">
             <div class="col-md-12 col-lg-6  video__description">
@@ -155,7 +157,155 @@
             };
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12,
-                center: {lat: 50.447914, lng: 30.522192}
+                center: {lat: 50.447914, lng: 30.522192},
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#747e8a"
+                            },
+                            {
+                                "weight": 0.5
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#a9a9a9"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.natural",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#f02424"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#c2e6b3"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.place_of_worship",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "weight": 0.5
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#bdc3c8"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#a1a3a3"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#a1a3a3"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#aabdcf"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#8597a5"
+                            }
+                        ]
+                    }
+                ]
             });
             var infowindow = new google.maps.InfoWindow({
                 content: ''
@@ -544,7 +694,7 @@
                     </div>
                     <div class="col-6 text-center">
                         <div class="logo-container ">
-                            <figure class="b-compare__logo gofit-logo"></figure>
+                            <a href="/subscription.html" class="b-compare__logo gofit-logo"></a>
                         </div>
                     </div>
                 </div>
@@ -640,7 +790,9 @@
                     <a class=" free-class__btn btn__yellow" href="">Получить бесплатное занятие</a>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-6  free-class__banner"></div>
+            <div class="col-md-12 col-lg-6  free-class__banner">
+                <img src="/assets/media/img/new-girl.png" alt="" class="free-class__girl">
+            </div>
         </div>
     </div>
 </section>
@@ -671,7 +823,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 d-flex flex-column justify-content-end">
+            <div class="col-12 col-sm-6 d-flex flex-column justify-content-end align-items-center">
                 <img class="mobile-app__banner" src="/assets/media/img/phone-app.png" alt="">
             </div>
         </div>
@@ -688,7 +840,7 @@
                     <form class="form-inline justify-content-center">
                         <div class="input-group">
                             <input type="tel" class="form-control form-input" id="call-back-input"
-                                   placeholder="+38 (095) 666-01-47">
+                                   placeholder="+38 (___) ___-__-__">
                             <button type="button" class="input-group-addon b-call-back__form-submit form-submit"
                                     data-content="phone"></button>
                         </div>
@@ -731,6 +883,7 @@
 <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
 <script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="assets/js/stick.js"></script>
+<script src="assets/js/jquery.maskedinput.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
