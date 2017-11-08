@@ -452,18 +452,79 @@ $(document).ready(function () {
         $(this).siblings('button').removeClass('box-show');
     });
     $("#call-back-input").mask("+38(999) 999-99-99");
-    // $('.free-class__banner').waypoint(function(){
-    //     $('.free-class__girl').addClass('animation');
-    // },{offset: getWindowCenter() + 150});
-    var girlImageAnimation={duration:1800,delay:20,easing:"ease-in-out",scale:1, opacity:0.95,distance:"150px"};
-    var phoneImageAnimation={duration:1800,delay:20,easing:"ease-in-out",scale:1, opacity:0.95,distance:"150px"};
-    window.sr=ScrollReveal(),
-         sr.reveal(".free-class__girl",girlImageAnimation);
-         sr.reveal(".mobile-app__banner",phoneImageAnimation);
-    // window.sr = ScrollReveal();
-    // sr.reveal('.free-class__girl', {
-    //     opacity:1,
-    //     scale:1,
-    //     origin: 'bottom',
-    //     distance: '100px',}, 300);
+    $('.free-class__girl').scroolly([{
+        from: 'con-top = vp-bottom',
+        to: 'con-bottom = top 100el',
+        cssFrom:{
+            'transform': 'translateY(100px)',
+            'opacity': '1'
+        },
+        cssTo:{
+            'transform': 'translateY(0px)',
+            'opacity': '1'
+        }
+    },
+        {
+            from: 'con-bottom = vp-top',
+            to: 'con-top = vp-top',
+            cssFrom:{
+                'transform': 'translateY(100px)',
+                'opacity': '1'
+            },
+            cssTo:{
+                'transform': 'translateY(0px)',
+                'opacity': '1'
+            }
+        }]);
+var mobileScrollData = [{
+    from: 'con-top = vp-bottom',
+    to: 'con-bottom = top 100el',
+    cssFrom:{
+        'transform': 'translateY(150px)',
+        'opacity': '1'
+    },
+    cssTo:{
+        'transform': 'translateY(0px)',
+        'opacity': '1'
+    }
+},
+    {
+        from: 'con-bottom = vp-top',
+        to: 'con-top = vp-top',
+        cssFrom:{
+            'transform': 'translateY( 150px)',
+            'opacity': '1'
+        },
+        cssTo:{
+            'transform': 'translateY(0px)',
+            'opacity': '1'
+        }
+    }];
+    if($(window).width <= 575){
+        var mobileScrollData = [{
+            from: 'con-top = vp-bottom',
+            to: 'con-bottom = top 100el',
+            cssFrom:{
+                'transform': 'translateY(50px)',
+                'opacity': '1'
+            },
+            cssTo:{
+                'transform': 'translateY(0px)',
+                'opacity': '1'
+            }
+        },
+            {
+                from: 'con-bottom = vp-top',
+                to: 'con-top = vp-top',
+                cssFrom:{
+                    'transform': 'translateY( 50px)',
+                    'opacity': '1'
+                },
+                cssTo:{
+                    'transform': 'translateY(0px)',
+                    'opacity': '1'
+                }
+            }];
+    }
+ $('.mobile-app__banner').scroolly(mobileScrollData);
 });
