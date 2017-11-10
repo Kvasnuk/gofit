@@ -118,28 +118,28 @@ $(document).ready(function () {
         }
     });
     function bannerGreenBlockDraw() {
-        var img = document.createElement('img');
+        var img = new Image();
         img.src = "/assets/media/img/pattern-1.svg";
-        var banner = document.getElementById('video__background');
-        var bannerB = document.getElementById('video__blur'),
-            winWidth = window.outerWidth,
+        var banner = document.getElementById('video__background'),
+        // var bannerB = document.getElementById('video__blur'),
+            winWidth = document.body.getBoundingClientRect().width,
             bannerWidth = winWidth / 2,
             bannerHeight = 1 + (winWidth / 16) * 9;
         if (bannerHeight > 860) {
             bannerHeight = 860;
         }
+        console.log(winWidth);
         var bannerCurveTop = (bannerHeight / 2) - 55,
             bannerCurveBottom = (bannerHeight / 2) + 55,
             bannerCurvePoint = bannerWidth - 77;
         var ctx = banner.getContext('2d');
-        var ctxB = bannerB.getContext('2d');
+        // var ctxB = bannerB.getContext('2d');
+        var pattern = ctx.createPattern(img, 'repeat');
         banner.width = bannerWidth;
         banner.height = bannerHeight;
-        bannerB.width = bannerWidth - 10;
-        bannerB.height = bannerHeight - 10;
+        // bannerB.width = bannerWidth - 10;
+        // bannerB.height = bannerHeight - 10;
         ctx.clearRect(0, 0, banner.width, banner.height);
-        ctxB.clearRect(0, 0, bannerB.width, bannerB.height);
-        var pat = ctx.createPattern(img, "repeat");
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(bannerWidth, 0);
@@ -149,7 +149,7 @@ $(document).ready(function () {
         ctx.lineTo(bannerWidth, bannerHeight);
         ctx.lineTo(0, bannerHeight);
         ctx.lineTo(0, 0);
-        ctx.globalAlpha = 0.95;
+        ctx.globalAlpha = 0.985;
         ctx.fillStyle = 'rgb(29, 208, 186)';
         ctx.strokeStyle = "transparent";
         ctx.fill();
@@ -165,24 +165,24 @@ $(document).ready(function () {
         ctx.lineTo(0, bannerHeight);
         ctx.lineTo(0, 0);
         ctx.globalAlpha = 0.99;
-        ctx.fillStyle = pat;
+        ctx.fillStyle =  pattern;
         ctx.strokeStyle = "transparent";
         ctx.fill();
         ctx.stroke();
 
-        ctxB.beginPath();
-        ctxB.moveTo(0, 0);
-        ctxB.lineTo(bannerWidth, 0);
-        ctxB.lineTo(bannerWidth, bannerCurveTop);
-        ctxB.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
-        ctxB.moveTo(bannerWidth, bannerCurveBottom);
-        ctxB.lineTo(bannerWidth, bannerHeight);
-        ctxB.lineTo(0, bannerHeight);
-        ctxB.lineTo(0, 0);
-        ctxB.fillStyle = 'rgba(158, 158, 158, 0.63)';
-        ctxB.strokeStyle = "transparent";
-        ctxB.fill();
-        ctxB.stroke();
+        // ctxB.beginPath();
+        // ctxB.moveTo(0, 0);
+        // ctxB.lineTo(bannerWidth, 0);
+        // ctxB.lineTo(bannerWidth, bannerCurveTop);
+        // ctxB.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
+        // ctxB.moveTo(bannerWidth, bannerCurveBottom);
+        // ctxB.lineTo(bannerWidth, bannerHeight);
+        // ctxB.lineTo(0, bannerHeight);
+        // ctxB.lineTo(0, 0);
+        // ctxB.fillStyle = 'rgba(158, 158, 158, 0.63)';
+        // ctxB.strokeStyle = "transparent";
+        // ctxB.fill();
+        // ctxB.stroke();
     }
 
     $('.video__play').click(function (e) {
