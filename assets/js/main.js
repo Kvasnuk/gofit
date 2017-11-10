@@ -452,9 +452,33 @@ $(document).ready(function () {
         $(this).siblings('button').removeClass('box-show');
     });
     $("#call-back-input").mask("+38(999) 999-99-99");
-    $('.free-class__girl').scroolly([{
+    var mobileScrollData = [{
         from: 'con-top = vp-bottom',
         to: 'con-bottom = top 100el',
+        cssFrom:{
+            'transform': 'translateY(100px)',
+            'opacity': '1'
+        },
+        cssTo:{
+            'transform': 'translateY(0px)',
+            'opacity': '1'
+        }
+    },
+        {
+            from: 'con-bottom = vp-top',
+            to: 'con-top = vp-top',
+            cssFrom:{
+                'transform': 'translateY( 100px)',
+                'opacity': '1'
+            },
+            cssTo:{
+                'transform': 'translateY(0px)',
+                'opacity': '1'
+            }
+        }];
+    var freeClassScrollData =[{
+        from: 'con-top = vp-bottom',
+        to: 'con-bottom = center',
         cssFrom:{
             'transform': 'translateY(100px)',
             'opacity': '1'
@@ -475,35 +499,11 @@ $(document).ready(function () {
                 'transform': 'translateY(0px)',
                 'opacity': '1'
             }
-        }]);
-var mobileScrollData = [{
-    from: 'con-top = vp-bottom',
-    to: 'con-bottom = top 100el',
-    cssFrom:{
-        'transform': 'translateY(150px)',
-        'opacity': '1'
-    },
-    cssTo:{
-        'transform': 'translateY(0px)',
-        'opacity': '1'
-    }
-},
-    {
-        from: 'con-bottom = vp-top',
-        to: 'con-top = vp-top',
-        cssFrom:{
-            'transform': 'translateY( 150px)',
-            'opacity': '1'
-        },
-        cssTo:{
-            'transform': 'translateY(0px)',
-            'opacity': '1'
-        }
-    }];
+        }];
     if($(window).width <= 575){
         var mobileScrollData = [{
             from: 'con-top = vp-bottom',
-            to: 'con-bottom = top 100el',
+            to: 'con-bottom = center',
             cssFrom:{
                 'transform': 'translateY(50px)',
                 'opacity': '1'
@@ -525,6 +525,33 @@ var mobileScrollData = [{
                     'opacity': '1'
                 }
             }];
+        freeClassScrollData =[{
+            from: 'con-top = vp-bottom',
+            to: 'con-bottom = center',
+            cssFrom:{
+                'transform': 'translateY(50px)',
+                'opacity': '1'
+            },
+            cssTo:{
+                'transform': 'translateY(0px)',
+                'opacity': '1'
+            }
+        },
+            {
+                from: 'con-bottom = vp-top',
+                to: 'con-top = vp-top',
+                cssFrom:{
+                    'transform': 'translateY(50px)',
+                    'opacity': '1'
+                },
+                cssTo:{
+                    'transform': 'translateY(0px)',
+                    'opacity': '1'
+                }
+            }];
     }
+
+
+ $('.free-class__girl').scroolly(freeClassScrollData);
  $('.mobile-app__banner').scroolly(mobileScrollData);
 });
