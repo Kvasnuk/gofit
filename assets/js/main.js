@@ -118,6 +118,7 @@ $(document).ready(function () {
         }
     });
     function bannerGreenBlockDraw() {
+        var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         var img = new Image();
         img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background'),
@@ -128,13 +129,15 @@ $(document).ready(function () {
         if (bannerHeight > 860) {
             bannerHeight = 860;
         }
-        console.log(winWidth);
         var bannerCurveTop = (bannerHeight / 2) - 55,
             bannerCurveBottom = (bannerHeight / 2) + 55,
             bannerCurvePoint = bannerWidth - 77;
         var ctx = banner.getContext('2d');
         // var ctxB = bannerB.getContext('2d');
         var pattern = ctx.createPattern(img, 'repeat');
+        if(isSafari == true){
+            pattern = 'transparent'
+        }
         banner.width = bannerWidth;
         banner.height = bannerHeight;
         // bannerB.width = bannerWidth - 10;
@@ -154,6 +157,26 @@ $(document).ready(function () {
         ctx.strokeStyle = "transparent";
         ctx.fill();
         ctx.stroke();
+
+
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(bannerWidth, 0);
+            ctx.lineTo(bannerWidth, bannerCurveTop);
+            ctx.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
+            ctx.moveTo(bannerWidth, bannerCurveBottom);
+            ctx.lineTo(bannerWidth, bannerHeight);
+            ctx.lineTo(0, bannerHeight);
+            ctx.lineTo(0, 0);
+            ctx.globalAlpha = 0.99;
+            ctx.fillStyle =  pattern;
+            ctx.strokeStyle = "transparent";
+            ctx.fill();
+            ctx.stroke();
+
+
+
+
 
         // ctx.beginPath();
         // ctx.moveTo(0, 0);
