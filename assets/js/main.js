@@ -122,8 +122,9 @@ $(document).ready(function () {
         img.src = "/assets/media/img/pattern-1.svg";
         var banner = document.getElementById('video__background');
         var bannerB = document.getElementById('video__blur'),
-            bannerWidth = $(window).width() / 2,
-            bannerHeight = 1 + ($(window).width() / 16) * 9;
+            winWidth = window.outerWidth,
+            bannerWidth = winWidth / 2,
+            bannerHeight = 1 + (winWidth / 16) * 9;
         if (bannerHeight > 860) {
             bannerHeight = 860;
         }
