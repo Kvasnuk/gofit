@@ -524,12 +524,13 @@ $(document).ready(function () {
                 'opacity': '1'
             }
         }];
+
     if($(window).width <= 575){
         var mobileScrollData = [{
             from: 'con-top = vp-bottom',
             to: 'con-bottom = center',
             cssFrom:{
-                'transform': 'translateY(50px)',
+                'transform': 'translateY(0px)',
                 'opacity': '1'
             },
             cssTo:{
@@ -541,7 +542,7 @@ $(document).ready(function () {
                 from: 'con-bottom = vp-top',
                 to: 'con-top = vp-top',
                 cssFrom:{
-                    'transform': 'translateY( 50px)',
+                    'transform': 'translateY( 0px)',
                     'opacity': '1'
                 },
                 cssTo:{
@@ -553,7 +554,7 @@ $(document).ready(function () {
             from: 'con-top = vp-bottom',
             to: 'con-bottom = center',
             cssFrom:{
-                'transform': 'translateY(50px)',
+                'transform': 'translateY(0px)',
                 'opacity': '1'
             },
             cssTo:{
@@ -565,7 +566,7 @@ $(document).ready(function () {
                 from: 'con-bottom = vp-top',
                 to: 'con-top = vp-top',
                 cssFrom:{
-                    'transform': 'translateY(50px)',
+                    'transform': 'translateY(0px)',
                     'opacity': '1'
                 },
                 cssTo:{
@@ -576,6 +577,5 @@ $(document).ready(function () {
     }
 
 
- $('.free-class__girl').scroolly(freeClassScrollData);
- $('.mobile-app__banner').scroolly(mobileScrollData);
+
 });
