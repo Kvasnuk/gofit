@@ -526,7 +526,8 @@ $(document).ready(function () {
         }];
     
     
-    if($(window).width <= 575){
+    if($(window).width() <  575){
+        console.log($(window).width());
         var mobileScrollData = [{
             from: 'con-top = vp-bottom',
             to: 'con-bottom = center',
