@@ -155,20 +155,20 @@ $(document).ready(function () {
         ctx.fill();
         ctx.stroke();
 
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(bannerWidth, 0);
-        ctx.lineTo(bannerWidth, bannerCurveTop);
-        ctx.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
-        ctx.moveTo(bannerWidth, bannerCurveBottom);
-        ctx.lineTo(bannerWidth, bannerHeight);
-        ctx.lineTo(0, bannerHeight);
-        ctx.lineTo(0, 0);
-        ctx.globalAlpha = 0.99;
-        ctx.fillStyle =  pattern;
-        ctx.strokeStyle = "transparent";
-        ctx.fill();
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.moveTo(0, 0);
+        // ctx.lineTo(bannerWidth, 0);
+        // ctx.lineTo(bannerWidth, bannerCurveTop);
+        // ctx.bezierCurveTo(bannerCurvePoint, bannerCurveTop, bannerCurvePoint, bannerCurveBottom, bannerWidth, bannerCurveBottom);
+        // ctx.moveTo(bannerWidth, bannerCurveBottom);
+        // ctx.lineTo(bannerWidth, bannerHeight);
+        // ctx.lineTo(0, bannerHeight);
+        // ctx.lineTo(0, 0);
+        // ctx.globalAlpha = 0.99;
+        // // ctx.fillStyle =  pattern;
+        // ctx.strokeStyle = "transparent";
+        // ctx.fill();
+        // ctx.stroke();
 
         // ctxB.beginPath();
         // ctxB.moveTo(0, 0);
