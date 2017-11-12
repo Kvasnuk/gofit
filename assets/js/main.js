@@ -531,7 +531,7 @@ $(document).ready(function () {
             from: 'con-top = vp-bottom',
             to: 'con-bottom = center',
             cssFrom:{
-                'transform': 'translateY(0px)',
+                'transform': 'translateY(50px)',
                 'opacity': '1'
             },
             cssTo:{
@@ -543,7 +543,7 @@ $(document).ready(function () {
                 from: 'con-bottom = vp-top',
                 to: 'con-top = vp-top',
                 cssFrom:{
-                    'transform': 'translateY( 0px)',
+                    'transform': 'translateY( 50px)',
                     'opacity': '1'
                 },
                 cssTo:{
@@ -555,7 +555,7 @@ $(document).ready(function () {
             from: 'con-top = vp-bottom',
             to: 'con-bottom = center',
             cssFrom:{
-                'transform': 'translateY(0px)',
+                'transform': 'translateY(50px)',
                 'opacity': '1'
             },
             cssTo:{
@@ -567,7 +567,7 @@ $(document).ready(function () {
                 from: 'con-bottom = vp-top',
                 to: 'con-top = vp-top',
                 cssFrom:{
-                    'transform': 'translateY(0px)',
+                    'transform': 'translateY(50px)',
                     'opacity': '1'
                 },
                 cssTo:{
