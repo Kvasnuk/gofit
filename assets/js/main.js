@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var getWindowCenter = function () {
         return $(window).height() / 2.5;
     };

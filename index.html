@@ -67,9 +67,10 @@
     <video id="home-page-video" loop  controls>
         <source src="/assets/media/video/gofit.mp4" type="video/mp4">
     </video>
-    <script>
-        document.getElementById('home-page-video').play();
-    </script>
+    <!--<script>-->
+
+       <!--document.getElementById('home-page-video').play();-->
+    <!--</script>-->
     <canvas id="video__background" class="video__background"></canvas>
     <!--<canvas id="video__blur"  class="video__blur"></canvas>-->
 
@@ -876,5 +877,8 @@
 <script src="assets/js/jquery.maskedinput.js"></script>
 <script src="assets/js/jquery.scroolly.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+    jQuery ("#home-page-video").get(0).play();
+</script>
 </body>
 </html>
